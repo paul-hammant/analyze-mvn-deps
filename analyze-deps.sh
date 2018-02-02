@@ -11,15 +11,18 @@ if ! [ -d ".deps" ]; then
   mkdir .deps
 fi
 
-mvn dependency:tree | sed '/Total time/q' > .deps/mvn-dep-tree-output.txt
+mvn dependency:tree > /dev/null # do downloads first...
+mvn dependency:tree | sed '/Total time/q' > .deps/mvn-dep-tree-output.txt # before generating smallest report
 
 cat .deps/mvn-dep-tree-output.txt | sed 's/|/ /g' | sed 's/+-/  /' | sed 's/\\-/  /' | sed 's/\[INFO\]//' | sed /^---/d \
-    | sed /:/!d | sed /:$/d | sed '/Total time/d' | sed '/Finished at/d'| sed '/Final Memory/d' \
-    | sed 's/   / /g' | sed /\[WARNING\]/d | sed 's/^ //' \
-    | sed 's/maven-dependency-plugin:[0-9]\.[0-9]:tree (default-cli) @ //' > .deps/dependencies-tree.txt
+    | sed /:/!d | sed /:$/d | sed '/Total time/d' | sed /\[WARNING[]]/d \
+    | sed 's/   / /g' | sed 's/^ //' | sed /::/d \
+    | sed 's/maven-dependency-plugin\:[0-9\.]*\:tree (default-cli) @ //' > .deps/dependencies-tree.txt
 
-cat .deps/mvn-dep-tree-output.txt | sed 's/ //g' | sed 's/|//g' | sed 's/+-//' | sed 's/\\-//' | sed 's/\[INFO\]//' \
-    | grep "\:[a-z]" | sed /^---/d | sed /\[WARNING\]/d | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened_unique-gavs.txt
+
+cat .deps/mvn-dep-tree-output.txt | sed 's/ //g' | sed 's/|//g' | sed 's/+-//' | sed 's/\\-//' \
+    | sed 's/\[INFO\]//' | sed /::/d | grep "\:[a-z]" | sed /^---/d \
+    | sed /\[WARNING[]]/d | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
 
 echo "" > .deps/big-dependency-report.txt
 
@@ -41,7 +44,7 @@ do
 
     cat .deps/tmp_list_of_versions_with_current_indicated.txt | sed "/ $version \*\*\*$/q" > .deps/tmp_list_of_versions_since_current.txt
 
-    echo "========================================================================\nPresently in use: $group:$artifact  $version" >> .deps/big-dependency-report.txt
+    echo "\n========================================================================\nPresently in use: $group:$artifact  $version" >> .deps/big-dependency-report.txt
 
     matches=$(cat .deps/dependencies-tree.txt | grep "$group:$artifact")
     matchesCount=$(echo "$matches" | wc -l | tr -d '[:space:]')
@@ -58,7 +61,8 @@ do
     fi
 
     rm .deps/curl-output.txt
-    rm .deps/tmp*
+    find .deps/ -name "tmp*" | xargs rm
 
-done < .deps/flattened_unique-gavs.txt
+done < .deps/flattened-unique-gavs.txt
 
+cat .deps/dependencies-tree.txt | sed '/^  /d' | grep '>' | sort | uniq > .deps/immediate-upgrade-opportunities.txt
