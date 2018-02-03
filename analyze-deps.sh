@@ -19,10 +19,7 @@ cat .deps/mvn-dep-tree-output.txt | sed 's/|/ /g' | sed 's/+-/  /' | sed 's/\\-/
     | sed 's/   / /g' | sed 's/^ //' | sed /::/d \
     | sed 's/maven-dependency-plugin\:[0-9\.]*\:tree (default-cli) @ //' > .deps/dependencies-tree.txt
 
-
-cat .deps/mvn-dep-tree-output.txt | sed 's/ //g' | sed 's/|//g' | sed 's/+-//' | sed 's/\\-//' \
-    | sed 's/\[INFO\]//' | sed /::/d | grep "\:[a-z]" | sed /^---/d \
-    | sed /\[WARNING[]]/d | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
+cat .deps/dependencies-tree.txt | sed 's/ //g' | grep "\:" | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
 
 echo "" > .deps/big-dependency-report.txt
 
@@ -61,7 +58,9 @@ do
     fi
 
     rm .deps/curl-output.txt
-    find .deps/ -name "tmp*" | xargs rm
+    rm .deps/tmp_list_of_versions_since_current.txt
+    rm .deps/tmp_list_of_versions.txt
+    rm .deps/tmp_list_of_versions_with_current_indicated.txt
 
 done < .deps/flattened-unique-gavs.txt
 
