@@ -15,7 +15,7 @@ That works on Mac, and might work on Linux too - lemme know. Oh and I just wante
 
 ## The results from runnng the script
 
-After running the sccript, peer inside the `.deps/` folder and look at the generated files:
+After running the script, peer inside the `.deps/` folder and look at the generated files:
 
 * big-dependency-report.txt
 * dependencies-tree.txt		
@@ -31,11 +31,13 @@ I think the `immediate-upgrade-opportunities.txt` and `dependencies-tree.txt`	fi
 
 1. If the dependency tree has two versions of the same group:artifact and there is some independence in the complete DAG between those two branches, then the item can be listed twice and/or marked for upgrade when none is necessary. You can see that with `log4j` (jar) which is marked as `1.2.12` in one branch and `1.2.17` in another. Anyway, the confusion means that right at the top, version `1.2.17` is marked as  eligible to upgrade to version `1.2.17` - doh!. Your eyeballs will scan past that quickly as a red herring.
 
-2. Related a group:artifact may be in the larger graph twice. Once as 'jar' and once as something else, causing an erronious marking for upgrade.
+2. Related a group:artifact may be in the larger graph twice. Once as 'jar' and once as something else, causing an erroneous marking for upgrade.
 
 3. Qualifiers are not well catered for. See `org.apache.avro:avro-mapred:jar:hadoop2:1.7.7:compile` above (hadoop2 being the qualifier).
 
 4. Where a team releases (say) `4.1.3` and then backports the fix of a bug to (say) `3.9.5` the latter might have a more recent timestamp and be deemed more recent than the former - causing an erroneous upgrade suggestion.
+
+5. The script is only checking the 'maven central' repository. So Gradle's at https://repo.gradle.org/gradle/libs-releases-local/ is not checked
 
 ## Examples of output for the excellent Hazelcast [github.com/hazelcast/hazelcast-jet-demos](https://github.com/hazelcast/hazelcast-jet-demos)
 
