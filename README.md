@@ -95,7 +95,7 @@ com.hazelcast.jet.demos:cryptocurrency-realtime-trend:jar:0.1-SNAPSHOT
   com.google.guava:guava:jar:14.0.1:compile  > 24.0-jre
   org.twitter4j:twitter4j-core:jar:4.0.1:compile  > 4.0.6
   org.twitter4j:twitter4j-stream:jar:4.0.1:compile  > 4.0.6
- org.json:json:jar:20171018:compile
+ org.json:json:jar:20171018:compile  > 20180130
 --- flight-telemetry ---
 com.hazelcast.jet.demos:flight-telemetry:jar:0.1-SNAPSHOT
  com.hazelcast.jet:hazelcast-jet:jar:0.6-SNAPSHOT:compile  > 0.5.1
@@ -276,6 +276,7 @@ com.hazelcast.jet.demos:online-training-traffic-predictor:jar:0.1-SNAPSHOT
   com.hazelcast.jet:hazelcast-jet-client-protocol:jar:0.6-SNAPSHOT:compile  > 0.5.1
   com.hazelcast:hazelcast-client:jar:3.9:compile  > 3.9.2
    com.hazelcast:hazelcast:jar:3.9:compile  > 3.9.2
+
 ```
 ### The immediate-upgrade-opportunities.txt file
 
@@ -294,9 +295,9 @@ com.hazelcast.jet.demos:online-training-traffic-predictor:jar:0.1-SNAPSHOT
  log4j:log4j:jar:1.2.12:compile  > 1.2.17
  log4j:log4j:jar:1.2.17:compile  > 1.2.17
  net.dean.jraw:JRAW:jar:1.0.0:compile  > 
+ org.json:json:jar:20171018:compile  > 20180130
  org.python:jython:jar:2.7.0:compile  > 2.7.1b3
  org.slf4j:slf4j-simple:jar:1.7.21:compile  > 1.7.25
-
 ```
 
 These are the pending upgrades that are directly within the control of the HazelCast dev team. All others 
@@ -306,22 +307,21 @@ other teams if they felt it was that important.
 ### The big-dependency-report.txt file
 
 ```
+
+
 ========================================================================
 Presently in use: aopalliance:aopalliance  1.0
- - a level        8 dependency among 1 (possibly transitive) uses
-
+   - a level 8 dependencies among 1 (possibly transitive) uses
 2005-09-20 05:45  1.0 ***
 
 ========================================================================
 Presently in use: com.apple:AppleJavaExtensions  1.4
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2010-10-22 13:57  1.4 ***
 
 ========================================================================
 Presently in use: com.clearspring.analytics:stream  2.7.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-10 19:08  2.9.6
 2016-08-01 20:09  2.9.5
 2016-07-05 19:30  2.9.4
@@ -334,16 +334,14 @@ Presently in use: com.clearspring.analytics:stream  2.7.0
 
 ========================================================================
 Presently in use: com.esotericsoftware:kryo-shaded  3.0.3
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-07-23 22:02  4.0.1
 2016-07-05 23:27  4.0.0
 2015-07-26 21:47  3.0.3 ***
 
 ========================================================================
 Presently in use: com.esotericsoftware:minlog  1.3.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2013-11-14 21:31  1.3
 2013-11-14 20:46  1.3-SNAPHOT
 unknown-date unknown:time  minlog
@@ -351,8 +349,7 @@ unknown-date unknown:time  1.3.0 ***
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.core:jackson-annotations  2.8.0
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-24 03:12  2.9.4
 2017-12-24 02:10  2.8.11
 2017-12-08 23:07  2.9.3
@@ -381,8 +378,7 @@ Presently in use: com.fasterxml.jackson.core:jackson-annotations  2.8.0
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.core:jackson-core  2.8.8
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2018-01-24 03:14  2.9.4
 2017-12-24 02:13  2.8.11
 2017-12-09 03:00  2.9.3
@@ -397,8 +393,7 @@ Presently in use: com.fasterxml.jackson.core:jackson-core  2.8.8
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.core:jackson-databind  2.8.8
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2018-01-24 04:07  2.9.4
 2017-12-24 02:21  2.8.11
 2017-12-20 03:26  2.7.9.2
@@ -417,8 +412,7 @@ Presently in use: com.fasterxml.jackson.core:jackson-databind  2.8.8
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.datatype:jackson-datatype-jdk8  2.8.8
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2018-01-24 04:39  2.9.4
 2017-12-24 02:29  2.8.11
 2017-12-09 03:18  2.9.3
@@ -433,8 +427,7 @@ Presently in use: com.fasterxml.jackson.datatype:jackson-datatype-jdk8  2.8.8
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.module:jackson-module-paranamer  2.8.8
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-24 04:34  2.9.4
 2017-12-24 02:27  2.8.11
 2017-12-09 03:11  2.9.3
@@ -449,8 +442,7 @@ Presently in use: com.fasterxml.jackson.module:jackson-module-paranamer  2.8.8
 
 ========================================================================
 Presently in use: com.fasterxml.jackson.module:jackson-module-scala_2.11  2.8.8
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-28 23:08  2.8.11
 2018-01-28 22:57  2.9.4
 2017-11-12 21:23  2.9.2
@@ -463,14 +455,12 @@ Presently in use: com.fasterxml.jackson.module:jackson-module-scala_2.11  2.8.8
 
 ========================================================================
 Presently in use: com.github.sarxos:webcam-capture  0.3.12
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-17 19:22  0.3.12 ***
 
 ========================================================================
 Presently in use: com.google.code.findbugs:annotations  3.0.0
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2015-10-09 06:11  3.0.1u2
 2015-10-09 06:05  3.0.1u1
 2015-10-09 05:46  3.0.1
@@ -478,8 +468,7 @@ Presently in use: com.google.code.findbugs:annotations  3.0.0
 
 ========================================================================
 Presently in use: com.google.code.findbugs:jsr305  1.3.9
- - a level        3 dependency among 2 (possibly transitive) uses
-
+   - a level 3 dependencies among 2 (possibly transitive) uses
 2017-03-31 04:55  3.0.2
 2015-10-09 05:06  3.0.1
 2014-07-10 11:55  3.0.0
@@ -491,8 +480,7 @@ unknown-date unknown:time  1.3.9 ***
 
 ========================================================================
 Presently in use: com.google.guava:guava  14.0.1
- - a level        2 dependency among 2 (possibly transitive) uses
-
+   - a level 2 dependencies among 2 (possibly transitive) uses
 2018-02-01 20:26  24.0-jre
 2018-02-01 20:17  24.0-android
 2017-12-21 01:03  23.6-jre
@@ -525,16 +513,14 @@ Presently in use: com.google.guava:guava  14.0.1
 
 ========================================================================
 Presently in use: com.google.inject:guice  3.0
- - a level        7 dependency among 1 (possibly transitive) uses
-
+   - a level 7 dependencies among 1 (possibly transitive) uses
 2016-06-17 19:53  4.1.0
 2015-04-28 20:33  4.0
 2011-03-25 18:19  3.0 ***
 
 ========================================================================
 Presently in use: com.google.protobuf:protobuf-java  2.5.0
- - a level        2 dependency among 3 (possibly transitive) uses
-
+   - a level 2 dependencies among 3 (possibly transitive) uses
 2017-12-21 20:09  3.5.1
 2017-11-13 22:34  3.5.0
 2017-08-15 22:07  3.4.0
@@ -558,8 +544,7 @@ Presently in use: com.google.protobuf:protobuf-java  2.5.0
 
 ========================================================================
 Presently in use: com.google.protobuf:protobuf-java  2.6.1
- - a level        5 dependency among 3 (possibly transitive) uses
-
+   - a level 5 dependencies among 3 (possibly transitive) uses
 2017-12-21 20:09  3.5.1
 2017-11-13 22:34  3.5.0
 2017-08-15 22:07  3.4.0
@@ -581,8 +566,7 @@ Presently in use: com.google.protobuf:protobuf-java  2.6.1
 
 ========================================================================
 Presently in use: com.google.protobuf:protobuf-java  3.2.0
- - a level        5 dependency among 3 (possibly transitive) uses
-
+   - a level 5 dependencies among 3 (possibly transitive) uses
 2017-12-21 20:09  3.5.1
 2017-11-13 22:34  3.5.0
 2017-08-15 22:07  3.4.0
@@ -592,51 +576,42 @@ Presently in use: com.google.protobuf:protobuf-java  3.2.0
 
 ========================================================================
 Presently in use: com.googlecode.efficient-java-matrix-library:ejml  0.23
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2014-06-13 04:42  0.25
 2013-12-27 02:15  0.24
 2013-06-21 16:16  0.23 ***
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:cryptocurrency-realtime-trend  0.1-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:demos  0.1-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:flight-telemetry  0.1-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:jetleopard  1.0.0-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:markov-chain-generator  0.1-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:online-training-traffic-predictor  0.1-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet.demos:realtime-image-recognition  1.0-SNAPSHOT
- - a level        0 dependency among 1 (possibly transitive) uses
-
+   - a level 0 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: com.hazelcast.jet:hazelcast-jet-client-protocol  0.6-SNAPSHOT
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-12-06 15:29  0.5.1
 2017-11-16 08:36  0.5
 2017-06-14 08:29  0.4
@@ -645,8 +620,7 @@ Presently in use: com.hazelcast.jet:hazelcast-jet-client-protocol  0.6-SNAPSHOT
 
 ========================================================================
 Presently in use: com.hazelcast.jet:hazelcast-jet-core  0.6-SNAPSHOT
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2017-12-06 15:29  0.5.1
 2017-11-16 08:36  0.5
 2017-06-14 08:29  0.4
@@ -655,15 +629,13 @@ Presently in use: com.hazelcast.jet:hazelcast-jet-core  0.6-SNAPSHOT
 
 ========================================================================
 Presently in use: com.hazelcast.jet:hazelcast-jet  0.5
- - a level        1 dependency among 7 (possibly transitive) uses
-
+   - a level 1 dependencies among 7 (possibly transitive) uses
 2017-12-06 15:29  0.5.1
 2017-11-16 08:36  0.5 ***
 
 ========================================================================
 Presently in use: com.hazelcast.jet:hazelcast-jet  0.6-SNAPSHOT
- - a level        4 dependency among 7 (possibly transitive) uses
-
+   - a level 4 dependencies among 7 (possibly transitive) uses
 2017-12-06 15:29  0.5.1
 2017-11-16 08:36  0.5
 2017-06-14 08:29  0.4
@@ -672,8 +644,7 @@ Presently in use: com.hazelcast.jet:hazelcast-jet  0.6-SNAPSHOT
 
 ========================================================================
 Presently in use: com.hazelcast:hazelcast-client  3.9
- - a level        2 dependency among 2 (possibly transitive) uses
-
+   - a level 2 dependencies among 2 (possibly transitive) uses
 2018-01-03 12:15  3.9.2
 2018-01-03 10:40  3.8.9
 2017-12-04 14:52  3.8.8
@@ -683,14 +654,12 @@ Presently in use: com.hazelcast:hazelcast-client  3.9
 
 ========================================================================
 Presently in use: com.hazelcast:hazelcast-spark  0.2
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-03-09 09:26  0.2 ***
 
 ========================================================================
 Presently in use: com.hazelcast:hazelcast  3.9
- - a level        2 dependency among 4 (possibly transitive) uses
-
+   - a level 2 dependencies among 4 (possibly transitive) uses
 2018-01-03 12:15  3.9.2
 2018-01-03 10:40  3.8.9
 2017-12-04 14:52  3.8.8
@@ -700,45 +669,38 @@ Presently in use: com.hazelcast:hazelcast  3.9
 
 ========================================================================
 Presently in use: com.io7m.xom:xom  1.2.10
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2013-10-25 16:16  1.2.10 ***
 
 ========================================================================
 Presently in use: com.nativelibs4java:bridj  0.7.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2015-03-08 16:48  0.7.0 ***
 
 ========================================================================
 Presently in use: com.ning:compress-lzf  1.0.3
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-03-14 02:49  1.0.4
 2014-08-16 04:32  1.0.3 ***
 
 ========================================================================
 Presently in use: com.squareup.okhttp3:okhttp  3.9.1
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-11-18 19:39  3.9.1 ***
 
 ========================================================================
 Presently in use: com.squareup.okio:okio  1.13.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-05-12 16:24  1.13.0 ***
 
 ========================================================================
 Presently in use: com.thoughtworks.paranamer:paranamer  2.8
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2015-08-26 11:29  2.8 ***
 
 ========================================================================
 Presently in use: com.twitter:chill-java  0.8.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-02-23 22:57  0.7.7
 2017-02-23 19:53  0.8.4
 2017-02-23 19:16  0.9.2
@@ -751,8 +713,7 @@ Presently in use: com.twitter:chill-java  0.8.0
 
 ========================================================================
 Presently in use: com.twitter:chill_2.11  0.8.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-02-23 22:56  0.7.7
 2017-02-23 19:53  0.8.4
 2017-02-23 19:15  0.9.2
@@ -767,31 +728,26 @@ Presently in use: com.twitter:chill_2.11  0.8.0
 
 ========================================================================
 Presently in use: com.twitter:hbc-core  2.2.0
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2014-07-02 17:25  2.2.0 ***
 
 ========================================================================
 Presently in use: com.twitter:hbc-twitter4j  2.2.0
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2014-07-02 17:29  2.2.0 ***
 
 ========================================================================
 Presently in use: com.twitter:joauth  6.0.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2014-01-30 23:17  6.0.2 ***
 
 ========================================================================
 Presently in use: com:betleopard  1.1.0
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: commons-beanutils:commons-beanutils-core  1.8.0
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2010-03-24 17:33  1.8.3
 2009-11-09 14:15  1.8.2
 2009-10-19 22:46  1.8.1
@@ -799,8 +755,7 @@ Presently in use: commons-beanutils:commons-beanutils-core  1.8.0
 
 ========================================================================
 Presently in use: commons-beanutils:commons-beanutils  1.7.0
- - a level        9 dependency among 2 (possibly transitive) uses
-
+   - a level 9 dependencies among 2 (possibly transitive) uses
 2016-09-21 16:21  1.9.3
 2014-05-26 19:19  1.9.2
 2014-01-06 18:19  1.9.1
@@ -813,8 +768,7 @@ Presently in use: commons-beanutils:commons-beanutils  1.7.0
 
 ========================================================================
 Presently in use: commons-cli:commons-cli  1.2
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-03-09 13:02  1.4
 2015-06-14 10:06  1.3.1
 2015-05-03 14:54  1.3
@@ -822,8 +776,7 @@ Presently in use: commons-cli:commons-cli  1.2
 
 ========================================================================
 Presently in use: commons-codec:commons-codec  1.3
- - a level        4 dependency among 2 (possibly transitive) uses
-
+   - a level 4 dependencies among 2 (possibly transitive) uses
 2017-10-17 14:54  1.11
 2014-11-06 14:15  1.10
 2013-12-21 03:57  1.9
@@ -836,8 +789,7 @@ Presently in use: commons-codec:commons-codec  1.3
 
 ========================================================================
 Presently in use: commons-codec:commons-codec  1.6
- - a level        7 dependency among 2 (possibly transitive) uses
-
+   - a level 7 dependencies among 2 (possibly transitive) uses
 2017-10-17 14:54  1.11
 2014-11-06 14:15  1.10
 2013-12-21 03:57  1.9
@@ -847,15 +799,13 @@ Presently in use: commons-codec:commons-codec  1.6
 
 ========================================================================
 Presently in use: commons-collections:commons-collections  3.2.1
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2015-11-12 23:11  3.2.2
 2008-04-15 01:09  3.2.1 ***
 
 ========================================================================
 Presently in use: commons-configuration:commons-configuration  1.6
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2013-10-24 08:22  1.10
 2012-08-16 19:29  1.9
 2012-01-27 20:42  1.8
@@ -864,8 +814,7 @@ Presently in use: commons-configuration:commons-configuration  1.6
 
 ========================================================================
 Presently in use: commons-digester:commons-digester  1.8
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2010-09-24 11:02  2.1
 2009-01-03 16:51  2.0
 2009-01-03 16:48  1.8.1
@@ -873,14 +822,12 @@ Presently in use: commons-digester:commons-digester  1.8
 
 ========================================================================
 Presently in use: commons-httpclient:commons-httpclient  3.1
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2007-08-21 13:44  3.1 ***
 
 ========================================================================
 Presently in use: commons-io:commons-io  2.1
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-10-15 10:00  2.6
 2016-04-22 14:52  2.5
 2012-06-12 22:22  2.4
@@ -890,15 +837,13 @@ Presently in use: commons-io:commons-io  2.1
 
 ========================================================================
 Presently in use: commons-lang:commons-lang  2.5
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2011-01-16 22:21  2.6
 2010-02-25 01:23  2.5 ***
 
 ========================================================================
 Presently in use: commons-logging:commons-logging  1.1.1
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2014-07-05 18:12  1.2
 2013-05-16 20:05  1.1.3
 2013-03-16 12:54  1.1.2
@@ -906,8 +851,7 @@ Presently in use: commons-logging:commons-logging  1.1.1
 
 ========================================================================
 Presently in use: commons-net:commons-net  2.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-02-11 15:18  3.6
 2016-05-01 22:37  3.5
 2015-11-19 12:33  3.4
@@ -920,22 +864,19 @@ Presently in use: commons-net:commons-net  2.2
 
 ========================================================================
 Presently in use: de.jollyday:jollyday  0.4.9
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-12-13 21:24  0.5.3
 2017-01-10 22:40  0.5.2
 2015-05-06 21:15  0.4.9 ***
 
 ========================================================================
 Presently in use: edu.stanford.nlp:stanford-corenlp  3.8.0
- - a level        1 dependency among 3 (possibly transitive) uses
-
+   - a level 1 dependencies among 3 (possibly transitive) uses
 2017-06-15 05:20  3.8.0 ***
 
 ========================================================================
 Presently in use: edu.stanford.nlp:stanford-corenlp  models
- - a level        1 dependency among 3 (possibly transitive) uses
-
+   - a level 1 dependencies among 3 (possibly transitive) uses
 2017-06-15 05:20  3.8.0
 2017-01-07 12:27  3.7.0
 2016-01-21 09:16  3.6.0
@@ -957,8 +898,7 @@ Presently in use: edu.stanford.nlp:stanford-corenlp  models
 
 ========================================================================
 Presently in use: edu.stanford.nlp:stanford-corenlp  models-english
- - a level        4 dependency among 3 (possibly transitive) uses
-
+   - a level 4 dependencies among 3 (possibly transitive) uses
 2017-06-15 05:20  3.8.0
 2017-01-07 12:27  3.7.0
 2016-01-21 09:16  3.6.0
@@ -980,8 +920,7 @@ Presently in use: edu.stanford.nlp:stanford-corenlp  models-english
 
 ========================================================================
 Presently in use: io.dropwizard.metrics:metrics-core  3.1.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-05 18:52  4.0.2
 2018-01-03 17:28  4.0.1
 2017-12-24 20:53  3.2.6
@@ -999,8 +938,7 @@ Presently in use: io.dropwizard.metrics:metrics-core  3.1.2
 
 ========================================================================
 Presently in use: io.dropwizard.metrics:metrics-graphite  3.1.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-05 18:54  4.0.2
 2018-01-03 17:30  4.0.1
 2017-12-24 20:55  3.2.6
@@ -1018,8 +956,7 @@ Presently in use: io.dropwizard.metrics:metrics-graphite  3.1.2
 
 ========================================================================
 Presently in use: io.dropwizard.metrics:metrics-json  3.1.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-05 18:56  4.0.2
 2018-01-03 17:33  4.0.1
 2017-12-24 20:58  3.2.6
@@ -1037,8 +974,7 @@ Presently in use: io.dropwizard.metrics:metrics-json  3.1.2
 
 ========================================================================
 Presently in use: io.dropwizard.metrics:metrics-jvm  3.1.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-05 18:52  4.0.2
 2018-01-03 17:29  4.0.1
 2017-12-24 20:54  3.2.6
@@ -1056,8 +992,7 @@ Presently in use: io.dropwizard.metrics:metrics-jvm  3.1.2
 
 ========================================================================
 Presently in use: io.netty:netty-all  4.0.42.Final
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-21 18:38  4.0.55.Final
 2018-01-21 15:09  4.1.20.Final
 2017-12-15 14:51  4.1.19.Final
@@ -1089,8 +1024,7 @@ Presently in use: io.netty:netty-all  4.0.42.Final
 
 ========================================================================
 Presently in use: io.netty:netty  3.8.0.Final
- - a level        3 dependency among 2 (possibly transitive) uses
-
+   - a level 3 dependencies among 2 (possibly transitive) uses
 2016-06-29 12:45  3.10.6.Final
 2015-10-13 10:12  3.10.5.Final
 2015-07-21 08:02  3.9.9.Final
@@ -1121,29 +1055,25 @@ Presently in use: io.netty:netty  3.8.0.Final
 
 ========================================================================
 Presently in use: javax.annotation:javax.annotation-api  1.2
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-09-13 12:24  1.3.1
 2016-09-22 18:50  1.3
 2013-04-26 17:38  1.2 ***
 
 ========================================================================
 Presently in use: javax.cache:cache-api  1.0.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-12-16 17:15  1.1.0
 2014-03-28 03:34  1.0.0 ***
 
 ========================================================================
 Presently in use: javax.inject:javax.inject  1
- - a level        8 dependency among 1 (possibly transitive) uses
-
+   - a level 8 dependencies among 1 (possibly transitive) uses
 2009-10-13 23:35  1 ***
 
 ========================================================================
 Presently in use: javax.servlet:javax.servlet-api  3.0.1
- - a level        2 dependency among 2 (possibly transitive) uses
-
+   - a level 2 dependencies among 2 (possibly transitive) uses
 2017-08-15 17:59  4.0.0
 2017-06-02 18:19  4.0.0-b07
 2017-05-24 16:02  4.0.0-b06
@@ -1166,8 +1096,7 @@ Presently in use: javax.servlet:javax.servlet-api  3.0.1
 
 ========================================================================
 Presently in use: javax.servlet:javax.servlet-api  3.1.0
- - a level        5 dependency among 2 (possibly transitive) uses
-
+   - a level 5 dependencies among 2 (possibly transitive) uses
 2017-08-15 17:59  4.0.0
 2017-06-02 18:19  4.0.0-b07
 2017-05-24 16:02  4.0.0-b06
@@ -1180,8 +1109,7 @@ Presently in use: javax.servlet:javax.servlet-api  3.1.0
 
 ========================================================================
 Presently in use: javax.validation:validation-api  1.1.0.Final
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-19 16:23  2.0.1.Final
 2017-08-03 14:44  2.0.0.Final
 2017-07-11 13:41  2.0.0.CR3
@@ -1195,8 +1123,7 @@ Presently in use: javax.validation:validation-api  1.1.0.Final
 
 ========================================================================
 Presently in use: javax.ws.rs:javax.ws.rs-api  2.0.1
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-08-04 15:16  2.1
 2017-06-14 22:20  2.1-m09
 2017-06-05 19:32  2.1-m08
@@ -1211,8 +1138,7 @@ Presently in use: javax.ws.rs:javax.ws.rs-api  2.0.1
 
 ========================================================================
 Presently in use: javax.xml.bind:jaxb-api  2.2.7
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-07-31 11:27  2.3.0
 2017-02-01 11:04  2.3.0-b170201.1204
 2014-10-20 12:34  2.2.12
@@ -1226,8 +1152,7 @@ Presently in use: javax.xml.bind:jaxb-api  2.2.7
 
 ========================================================================
 Presently in use: joda-time:joda-time  2.9.4
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-03-23 13:33  2.9.9
 2017-03-22 22:15  2.9.8
 2016-12-19 22:55  2.9.7
@@ -1237,14 +1162,12 @@ Presently in use: joda-time:joda-time  2.9.4
 
 ========================================================================
 Presently in use: junit:junit  4.12
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2014-12-04 16:17  4.12 ***
 
 ========================================================================
 Presently in use: log4j:log4j  1.2.12
- - a level        1 dependency among 4 (possibly transitive) uses
-
+   - a level 1 dependencies among 4 (possibly transitive) uses
 2012-05-26 09:43  1.2.17
 2010-03-31 04:25  1.2.16
 2007-08-30 17:41  1.2.15
@@ -1254,24 +1177,20 @@ Presently in use: log4j:log4j  1.2.12
 
 ========================================================================
 Presently in use: log4j:log4j  1.2.17
- - a level        4 dependency among 4 (possibly transitive) uses
-
+   - a level 4 dependencies among 4 (possibly transitive) uses
 2012-05-26 09:43  1.2.17 ***
 
 ========================================================================
 Presently in use: net.dean.jraw:JRAW  1.0.0
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: net.dean.jraw:moshi-deeply-nested  1.0.0
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 
 ========================================================================
 Presently in use: net.java.dev.jets3t:jets3t  0.7.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2015-08-23 13:44  0.9.4
 2015-01-31 21:43  0.9.3
 2014-07-22 10:22  0.9.2
@@ -1286,8 +1205,7 @@ unknown-date unknown:time  0.7.1 ***
 
 ========================================================================
 Presently in use: net.jpountz.lz4:lz4  1.3.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2014-11-26 19:24  1.3
 2013-08-08 15:34  1.2.0
 2013-05-01 16:47  1.1.2
@@ -1298,14 +1216,12 @@ unknown-date unknown:time  1.3.0 ***
 
 ========================================================================
 Presently in use: net.lingala.zip4j:zip4j  1.3.2
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2013-12-27 19:23  1.3.2 ***
 
 ========================================================================
 Presently in use: net.razorvine:pyrolite  4.13
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-07-05 20:04  4.20
 2017-03-19 14:18  4.19
 2017-02-19 14:56  4.18
@@ -1317,16 +1233,14 @@ Presently in use: net.razorvine:pyrolite  4.13
 
 ========================================================================
 Presently in use: net.sf.py4j:py4j  0.10.4
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-07-05 09:05  0.10.6
 2017-05-28 11:35  0.10.5
 2016-10-16 10:39  0.10.4 ***
 
 ========================================================================
 Presently in use: org.apache.avro:avro-ipc  1.7.7
- - a level        4 dependency among 2 (possibly transitive) uses
-
+   - a level 4 dependencies among 2 (possibly transitive) uses
 2017-05-07 18:53  1.8.2
 2016-05-17 16:05  1.8.1
 2016-01-22 16:19  1.8.0
@@ -1334,8 +1248,7 @@ Presently in use: org.apache.avro:avro-ipc  1.7.7
 
 ========================================================================
 Presently in use: org.apache.avro:avro-ipc  tests
- - a level        7 dependency among 2 (possibly transitive) uses
-
+   - a level 7 dependencies among 2 (possibly transitive) uses
 2017-05-07 18:53  1.8.2
 2016-05-17 16:05  1.8.1
 2016-01-22 16:19  1.8.0
@@ -1359,8 +1272,7 @@ Presently in use: org.apache.avro:avro-ipc  tests
 
 ========================================================================
 Presently in use: org.apache.avro:avro-mapred  hadoop2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-05-07 18:53  1.8.2
 2016-05-17 16:05  1.8.1
 2016-01-22 16:21  1.8.0
@@ -1384,8 +1296,7 @@ Presently in use: org.apache.avro:avro-mapred  hadoop2
 
 ========================================================================
 Presently in use: org.apache.avro:avro  1.7.7
- - a level        6 dependency among 4 (possibly transitive) uses
-
+   - a level 6 dependencies among 4 (possibly transitive) uses
 2017-05-07 18:52  1.8.2
 2016-05-17 16:03  1.8.1
 2016-01-22 16:16  1.8.0
@@ -1393,8 +1304,7 @@ Presently in use: org.apache.avro:avro  1.7.7
 
 ========================================================================
 Presently in use: org.apache.commons:commons-compress  1.4.1
- - a level        5 dependency among 2 (possibly transitive) uses
-
+   - a level 5 dependencies among 2 (possibly transitive) uses
 2017-10-14 13:28  1.15
 2017-05-11 19:16  1.14
 2016-12-25 12:26  1.13
@@ -1411,8 +1321,7 @@ Presently in use: org.apache.commons:commons-compress  1.4.1
 
 ========================================================================
 Presently in use: org.apache.commons:commons-compress  1.7
- - a level        8 dependency among 2 (possibly transitive) uses
-
+   - a level 8 dependencies among 2 (possibly transitive) uses
 2017-10-14 13:28  1.15
 2017-05-11 19:16  1.14
 2016-12-25 12:26  1.13
@@ -1426,14 +1335,12 @@ Presently in use: org.apache.commons:commons-compress  1.7
 
 ========================================================================
 Presently in use: org.apache.commons:commons-crypto  1.0.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2016-07-26 01:20  1.0.0 ***
 
 ========================================================================
 Presently in use: org.apache.commons:commons-lang3  3.3.1
- - a level        2 dependency among 2 (possibly transitive) uses
-
+   - a level 2 dependencies among 2 (possibly transitive) uses
 2017-11-04 18:16  3.7
 2017-06-09 09:41  3.6
 2016-10-13 19:53  3.5
@@ -1443,16 +1350,14 @@ Presently in use: org.apache.commons:commons-lang3  3.3.1
 
 ========================================================================
 Presently in use: org.apache.commons:commons-lang3  3.5
- - a level        5 dependency among 2 (possibly transitive) uses
-
+   - a level 5 dependencies among 2 (possibly transitive) uses
 2017-11-04 18:16  3.7
 2017-06-09 09:41  3.6
 2016-10-13 19:53  3.5 ***
 
 ========================================================================
 Presently in use: org.apache.commons:commons-math3  3.4.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2016-03-17 17:35  3.6.1
 2016-01-02 19:37  3.6
 2015-04-14 12:39  3.5
@@ -1460,15 +1365,13 @@ Presently in use: org.apache.commons:commons-math3  3.4.1
 
 ========================================================================
 Presently in use: org.apache.commons:commons-math  2.1
- - a level        6 dependency among 2 (possibly transitive) uses
-
+   - a level 6 dependencies among 2 (possibly transitive) uses
 2011-02-26 18:24  2.2
 2010-03-28 02:48  2.1 ***
 
 ========================================================================
 Presently in use: org.apache.curator:curator-client  2.4.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-07-26 14:09  4.0.0
 2017-03-01 04:28  3.3.0
 2017-03-01 03:17  2.12.0
@@ -1492,8 +1395,7 @@ Presently in use: org.apache.curator:curator-client  2.4.0
 
 ========================================================================
 Presently in use: org.apache.curator:curator-framework  2.4.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-07-26 14:09  4.0.0
 2017-03-01 04:29  3.3.0
 2017-03-01 03:17  2.12.0
@@ -1517,8 +1419,7 @@ Presently in use: org.apache.curator:curator-framework  2.4.0
 
 ========================================================================
 Presently in use: org.apache.curator:curator-recipes  2.4.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-07-26 14:10  4.0.0
 2017-03-01 04:29  3.3.0
 2017-03-01 03:17  2.12.0
@@ -1542,8 +1443,7 @@ Presently in use: org.apache.curator:curator-recipes  2.4.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-annotations  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:37  2.7.5
 2017-12-08 20:14  3.0.0
 2017-12-05 09:20  2.8.3
@@ -1574,8 +1474,7 @@ Presently in use: org.apache.hadoop:hadoop-annotations  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-auth  2.2.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:37  2.7.5
 2017-12-08 20:15  3.0.0
 2017-12-05 09:21  2.8.3
@@ -1606,8 +1505,7 @@ Presently in use: org.apache.hadoop:hadoop-auth  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-client  2.2.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:42  2.7.5
 2017-12-08 20:21  3.0.0
 2017-12-05 09:29  2.8.3
@@ -1638,8 +1536,7 @@ Presently in use: org.apache.hadoop:hadoop-client  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-common  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:37  2.7.5
 2017-12-08 20:15  3.0.0
 2017-12-05 09:21  2.8.3
@@ -1670,8 +1567,7 @@ Presently in use: org.apache.hadoop:hadoop-common  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-hdfs  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:38  2.7.5
 2017-12-08 20:16  3.0.0
 2017-12-05 09:22  2.8.3
@@ -1702,8 +1598,7 @@ Presently in use: org.apache.hadoop:hadoop-hdfs  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-mapreduce-client-app  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:40  2.7.5
 2017-12-08 20:19  3.0.0
 2017-12-05 09:26  2.8.3
@@ -1734,8 +1629,7 @@ Presently in use: org.apache.hadoop:hadoop-mapreduce-client-app  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-mapreduce-client-common  2.2.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:40  2.7.5
 2017-12-08 20:19  3.0.0
 2017-12-05 09:26  2.8.3
@@ -1766,8 +1660,7 @@ Presently in use: org.apache.hadoop:hadoop-mapreduce-client-common  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-mapreduce-client-core  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:40  2.7.5
 2017-12-08 20:19  3.0.0
 2017-12-05 09:26  2.8.3
@@ -1798,8 +1691,7 @@ Presently in use: org.apache.hadoop:hadoop-mapreduce-client-core  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-mapreduce-client-jobclient  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:41  2.7.5
 2017-12-08 20:19  3.0.0
 2017-12-05 09:27  2.8.3
@@ -1830,8 +1722,7 @@ Presently in use: org.apache.hadoop:hadoop-mapreduce-client-jobclient  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-mapreduce-client-shuffle  2.2.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:40  2.7.5
 2017-12-08 20:19  3.0.0
 2017-12-05 09:26  2.8.3
@@ -1862,8 +1753,7 @@ Presently in use: org.apache.hadoop:hadoop-mapreduce-client-shuffle  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-yarn-api  2.2.0
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:39  2.7.5
 2017-12-08 20:16  3.0.0
 2017-12-05 09:24  2.8.3
@@ -1894,8 +1784,7 @@ Presently in use: org.apache.hadoop:hadoop-yarn-api  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-yarn-client  2.2.0
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:40  2.7.5
 2017-12-08 20:18  3.0.0
 2017-12-05 09:25  2.8.3
@@ -1926,8 +1815,7 @@ Presently in use: org.apache.hadoop:hadoop-yarn-client  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-yarn-common  2.2.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:39  2.7.5
 2017-12-08 20:16  3.0.0
 2017-12-05 09:24  2.8.3
@@ -1958,8 +1846,7 @@ Presently in use: org.apache.hadoop:hadoop-yarn-common  2.2.0
 
 ========================================================================
 Presently in use: org.apache.hadoop:hadoop-yarn-server-common  2.2.0
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2017-12-16 01:39  2.7.5
 2017-12-08 20:17  3.0.0
 2017-12-05 09:24  2.8.3
@@ -1990,8 +1877,7 @@ Presently in use: org.apache.hadoop:hadoop-yarn-server-common  2.2.0
 
 ========================================================================
 Presently in use: org.apache.httpcomponents:httpclient  4.2.5
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-18 11:54  4.5.5
 2017-11-27 09:42  4.5.4
 2017-01-21 16:00  4.5.3
@@ -2012,8 +1898,7 @@ Presently in use: org.apache.httpcomponents:httpclient  4.2.5
 
 ========================================================================
 Presently in use: org.apache.httpcomponents:httpcore  4.2.4
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-12 03:42  4.4.9
 2017-09-29 14:23  4.4.8
 2017-09-10 10:22  4.4.7
@@ -2033,14 +1918,12 @@ Presently in use: org.apache.httpcomponents:httpcore  4.2.4
 
 ========================================================================
 Presently in use: org.apache.ivy:ivy  2.4.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2014-12-22 16:40  2.4.0 ***
 
 ========================================================================
 Presently in use: org.apache.lucene:lucene-analyzers-common  4.10.3
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-14 09:36  7.2.1
 2017-12-19 09:03  7.2.0
 2017-10-23 15:58  5.5.5
@@ -2080,8 +1963,7 @@ Presently in use: org.apache.lucene:lucene-analyzers-common  4.10.3
 
 ========================================================================
 Presently in use: org.apache.lucene:lucene-core  4.10.3
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-14 09:33  7.2.1
 2017-12-19 09:09  7.2.0
 2017-10-23 15:59  5.5.5
@@ -2121,8 +2003,7 @@ Presently in use: org.apache.lucene:lucene-core  4.10.3
 
 ========================================================================
 Presently in use: org.apache.lucene:lucene-queries  4.10.3
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-14 09:32  7.2.1
 2017-12-19 09:25  7.2.0
 2017-10-23 16:00  5.5.5
@@ -2162,8 +2043,7 @@ Presently in use: org.apache.lucene:lucene-queries  4.10.3
 
 ========================================================================
 Presently in use: org.apache.lucene:lucene-queryparser  4.10.3
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-14 09:32  7.2.1
 2017-12-19 09:22  7.2.0
 2017-10-23 16:00  5.5.5
@@ -2203,8 +2083,7 @@ Presently in use: org.apache.lucene:lucene-queryparser  4.10.3
 
 ========================================================================
 Presently in use: org.apache.lucene:lucene-sandbox  4.10.3
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-14 09:31  7.2.1
 2017-12-19 09:17  7.2.0
 2017-10-23 15:58  5.5.5
@@ -2244,8 +2123,7 @@ Presently in use: org.apache.lucene:lucene-sandbox  4.10.3
 
 ========================================================================
 Presently in use: org.apache.spark:spark-core_2.11  2.1.1
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:29  2.2.1
 2017-10-03 03:05  2.1.2
 2017-07-01 00:34  2.2.0
@@ -2253,8 +2131,7 @@ Presently in use: org.apache.spark:spark-core_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.spark:spark-launcher_2.11  2.1.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:13  2.2.1
 2017-10-03 02:38  2.1.2
 2017-07-01 00:38  2.2.0
@@ -2262,8 +2139,7 @@ Presently in use: org.apache.spark:spark-launcher_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.spark:spark-network-common_2.11  2.1.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:09  2.2.1
 2017-10-03 02:44  2.1.2
 2017-07-01 00:34  2.2.0
@@ -2271,8 +2147,7 @@ Presently in use: org.apache.spark:spark-network-common_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.spark:spark-network-shuffle_2.11  2.1.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:12  2.2.1
 2017-10-03 03:11  2.1.2
 2017-07-01 00:40  2.2.0
@@ -2280,8 +2155,7 @@ Presently in use: org.apache.spark:spark-network-shuffle_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.spark:spark-tags_2.11  2.1.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:22  2.2.1
 2017-10-03 03:02  2.1.2
 2017-07-01 00:35  2.2.0
@@ -2289,8 +2163,7 @@ Presently in use: org.apache.spark:spark-tags_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.spark:spark-unsafe_2.11  2.1.1
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-25 05:10  2.2.1
 2017-10-03 02:40  2.1.2
 2017-07-01 00:33  2.2.0
@@ -2298,15 +2171,13 @@ Presently in use: org.apache.spark:spark-unsafe_2.11  2.1.1
 
 ========================================================================
 Presently in use: org.apache.xbean:xbean-asm5-shaded  4.4
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2015-11-23 10:46  4.5
 2015-09-10 04:48  4.4 ***
 
 ========================================================================
 Presently in use: org.apache.zookeeper:zookeeper  3.4.5
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-11-01 19:08  3.4.11
 2017-03-23 12:08  3.4.10
 2016-08-23 08:55  3.4.9
@@ -2317,74 +2188,62 @@ Presently in use: org.apache.zookeeper:zookeeper  3.4.5
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-WebcamCapture  0.28
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:09  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-calibration  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:11  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-core  0.28
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:11  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-feature  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:11  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-geo  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:12  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-io  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:12  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-ip  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:12  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-learning  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:12  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-recognition  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:13  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-sfm  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:13  0.28 ***
 
 ========================================================================
 Presently in use: org.boofcv:boofcv-swing  0.28
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-20 16:11  0.28 ***
 
 ========================================================================
 Presently in use: org.codehaus.jackson:jackson-core-asl  1.9.13
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2012-11-06 16:27  1.9.11
 2012-10-02 01:38  1.8.11
 2012-09-24 02:55  1.9.10
@@ -2468,8 +2327,7 @@ unknown-date unknown:time  1.9.13 ***
 
 ========================================================================
 Presently in use: org.codehaus.jackson:jackson-mapper-asl  1.9.13
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2012-11-06 16:27  1.9.11
 2012-10-02 01:39  1.8.11
 2012-09-24 02:56  1.9.10
@@ -2553,92 +2411,77 @@ unknown-date unknown:time  1.9.13 ***
 
 ========================================================================
 Presently in use: org.ddogleg:ddogleg  0.13
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-17 21:48  0.13 ***
 
 ========================================================================
 Presently in use: org.deepboof:io  0.4
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-08-14 06:29  0.4 ***
 
 ========================================================================
 Presently in use: org.deepboof:learning  0.4
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-08-14 06:30  0.4 ***
 
 ========================================================================
 Presently in use: org.deepboof:main  0.4
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-08-14 06:30  0.4 ***
 
 ========================================================================
 Presently in use: org.deepboof:models  0.4
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-08-14 06:30  0.4 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-cdense  0.33
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:37  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-core  0.33
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:38  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-ddense  0.33
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:38  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-dsparse  0.33
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:38  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-fdense  0.33
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:38  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-simple  0.33
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:38  0.33 ***
 
 ========================================================================
 Presently in use: org.ejml:ejml-zdense  0.33
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2018-01-17 16:39  0.33 ***
 
 ========================================================================
 Presently in use: org.fusesource.leveldbjni:leveldbjni-all  1.8
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2013-10-17 13:18  1.8 ***
 
 ========================================================================
 Presently in use: org.georegression:georegression  0.15
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-18 03:43  0.15 ***
 
 ========================================================================
 Presently in use: org.glassfish.hk2.external:aopalliance-repackaged  2.4.0-b34
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2018-01-05 22:42  2.5.0-b61
 2017-11-09 20:42  2.5.0-b60
 2017-10-20 14:49  2.5.0-b59
@@ -2703,8 +2546,7 @@ Presently in use: org.glassfish.hk2.external:aopalliance-repackaged  2.4.0-b34
 
 ========================================================================
 Presently in use: org.glassfish.hk2.external:javax.inject  2.4.0-b34
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-05 22:40  2.5.0-b61
 2017-11-09 20:41  2.5.0-b60
 2017-10-20 14:48  2.5.0-b59
@@ -2769,8 +2611,7 @@ Presently in use: org.glassfish.hk2.external:javax.inject  2.4.0-b34
 
 ========================================================================
 Presently in use: org.glassfish.hk2:hk2-api  2.4.0-b34
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-05 22:42  2.5.0-b61
 2017-11-09 20:43  2.5.0-b60
 2017-10-20 14:49  2.5.0-b59
@@ -2835,8 +2676,7 @@ Presently in use: org.glassfish.hk2:hk2-api  2.4.0-b34
 
 ========================================================================
 Presently in use: org.glassfish.hk2:hk2-locator  2.4.0-b34
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2018-01-05 22:43  2.5.0-b61
 2017-11-09 20:43  2.5.0-b60
 2017-10-20 14:50  2.5.0-b59
@@ -2900,8 +2740,7 @@ Presently in use: org.glassfish.hk2:hk2-locator  2.4.0-b34
 
 ========================================================================
 Presently in use: org.glassfish.hk2:hk2-utils  2.4.0-b34
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2018-01-05 22:41  2.5.0-b61
 2017-11-09 20:42  2.5.0-b60
 2017-10-20 14:48  2.5.0-b59
@@ -2966,8 +2805,7 @@ Presently in use: org.glassfish.hk2:hk2-utils  2.4.0-b34
 
 ========================================================================
 Presently in use: org.glassfish.hk2:osgi-resource-locator  1.0.1
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-07-11 01:04  2.5.0-b42
 2017-07-06 22:16  2.5.0-b41
 2017-07-06 21:50  2.5.0-b40
@@ -3013,8 +2851,7 @@ unknown-date unknown:time  1.0.1 ***
 
 ========================================================================
 Presently in use: org.glassfish.jersey.bundles.repackaged:jersey-guava  2.22.2
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-03-13 12:58  2.26-b03
 2017-02-01 00:00  2.26-b02
 2017-01-19 17:24  2.25.1
@@ -3031,8 +2868,7 @@ Presently in use: org.glassfish.jersey.bundles.repackaged:jersey-guava  2.22.2
 
 ========================================================================
 Presently in use: org.glassfish.jersey.containers:jersey-container-servlet-core  2.22.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-09-05 10:10  2.26
 2017-07-27 06:31  2.26-b09
 2017-07-12 09:02  2.26-b08
@@ -3056,8 +2892,7 @@ Presently in use: org.glassfish.jersey.containers:jersey-container-servlet-core 
 
 ========================================================================
 Presently in use: org.glassfish.jersey.containers:jersey-container-servlet  2.22.2
- - a level        3 dependency among 2 (possibly transitive) uses
-
+   - a level 3 dependencies among 2 (possibly transitive) uses
 2017-09-05 10:20  2.26
 2017-07-27 06:37  2.26-b09
 2017-07-12 09:25  2.26-b08
@@ -3081,8 +2916,7 @@ Presently in use: org.glassfish.jersey.containers:jersey-container-servlet  2.22
 
 ========================================================================
 Presently in use: org.glassfish.jersey.core:jersey-client  2.22.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-09-05 10:19  2.26
 2017-07-27 06:31  2.26-b09
 2017-07-12 09:18  2.26-b08
@@ -3106,8 +2940,7 @@ Presently in use: org.glassfish.jersey.core:jersey-client  2.22.2
 
 ========================================================================
 Presently in use: org.glassfish.jersey.core:jersey-common  2.22.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-09-05 10:15  2.26
 2017-07-27 06:39  2.26-b09
 2017-07-12 09:24  2.26-b08
@@ -3131,8 +2964,7 @@ Presently in use: org.glassfish.jersey.core:jersey-common  2.22.2
 
 ========================================================================
 Presently in use: org.glassfish.jersey.core:jersey-server  2.22.2
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-09-05 10:14  2.26
 2017-07-27 06:37  2.26-b09
 2017-07-12 09:06  2.26-b08
@@ -3156,8 +2988,7 @@ Presently in use: org.glassfish.jersey.core:jersey-server  2.22.2
 
 ========================================================================
 Presently in use: org.glassfish.jersey.media:jersey-media-jaxb  2.22.2
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-09-05 10:14  2.26
 2017-07-27 06:33  2.26-b09
 2017-07-12 09:14  2.26-b08
@@ -3181,8 +3012,7 @@ Presently in use: org.glassfish.jersey.media:jersey-media-jaxb  2.22.2
 
 ========================================================================
 Presently in use: org.glassfish:javax.json  1.0.4
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2017-11-02 18:57  1.1.2
 2017-05-18 22:43  1.1
 2017-03-10 16:05  1.1.0-M2
@@ -3191,14 +3021,12 @@ Presently in use: org.glassfish:javax.json  1.0.4
 
 ========================================================================
 Presently in use: org.hamcrest:hamcrest-core  1.3
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2012-07-09 21:08  1.3 ***
 
 ========================================================================
 Presently in use: org.javassist:javassist  3.18.1-GA
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-10-10 18:05  3.22.0-GA
 2017-06-06 13:02  3.22.0-CR2
 2016-10-04 16:29  3.22.0-CR1
@@ -3210,23 +3038,20 @@ Presently in use: org.javassist:javassist  3.18.1-GA
 
 ========================================================================
 Presently in use: org.jetbrains.kotlin:kotlin-stdlib  1.2.10
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2018-01-23 12:59  1.2.21
 2018-01-16 18:21  1.2.20
 2017-12-13 14:55  1.2.10 ***
 
 ========================================================================
 Presently in use: org.jetbrains:annotations  13.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2015-10-15 08:56  15.0
 2013-12-17 12:10  13.0 ***
 
 ========================================================================
 Presently in use: org.json4s:json4s-ast_2.11  3.2.11
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-11-30 13:34  3.6.0-M2
 2017-10-13 15:12  3.6.0-M1
 2017-07-29 00:08  3.5.3
@@ -3249,8 +3074,7 @@ Presently in use: org.json4s:json4s-ast_2.11  3.2.11
 
 ========================================================================
 Presently in use: org.json4s:json4s-core_2.11  3.2.11
- - a level        4 dependency among 1 (possibly transitive) uses
-
+   - a level 4 dependencies among 1 (possibly transitive) uses
 2017-11-30 13:36  3.6.0-M2
 2017-10-13 15:13  3.6.0-M1
 2017-07-29 00:08  3.5.3
@@ -3272,8 +3096,7 @@ Presently in use: org.json4s:json4s-core_2.11  3.2.11
 
 ========================================================================
 Presently in use: org.json4s:json4s-jackson_2.11  3.2.11
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-11-30 13:38  3.6.0-M2
 2017-10-13 15:12  3.6.0-M1
 2017-07-29 00:07  3.5.3
@@ -3295,20 +3118,18 @@ Presently in use: org.json4s:json4s-jackson_2.11  3.2.11
 
 ========================================================================
 Presently in use: org.json:json  20171018
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
+2018-02-03 21:40  20180130
 2017-10-19 19:31  20171018 ***
 
 ========================================================================
 Presently in use: org.mortbay.jetty:jetty-util  6.1.26
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2010-11-10 21:38  6.1.26 ***
 
 ========================================================================
 Presently in use: org.objenesis:objenesis  2.1
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2017-06-20 15:28  2.6
 2017-01-18 02:01  2.5.1
 2017-01-13 04:40  2.5
@@ -3319,8 +3140,7 @@ Presently in use: org.objenesis:objenesis  2.1
 
 ========================================================================
 Presently in use: org.python:jython  2.7.0
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2016-02-03 04:18  2.7.1b3
 2015-10-12 03:59  2.7.1b2
 2015-09-11 01:58  2.7.1b1
@@ -3328,8 +3148,7 @@ Presently in use: org.python:jython  2.7.0
 
 ========================================================================
 Presently in use: org.rauschig:jarchivelib  0.5.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2015-04-15 13:17  0.7.1
 2014-12-02 18:25  0.7.0
 2014-11-14 21:04  0.6.2
@@ -3339,8 +3158,7 @@ Presently in use: org.rauschig:jarchivelib  0.5.0
 
 ========================================================================
 Presently in use: org.roaringbitmap:RoaringBitmap  0.5.11
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-02-01 19:00  0.7.0
 2017-12-23 18:07  0.6.66
 2017-12-23 03:05  0.6.65
@@ -3411,8 +3229,7 @@ Presently in use: org.roaringbitmap:RoaringBitmap  0.5.11
 
 ========================================================================
 Presently in use: org.scala-lang.modules:scala-parser-combinators_2.11  1.0.1
- - a level        7 dependency among 1 (possibly transitive) uses
-
+   - a level 7 dependencies among 1 (possibly transitive) uses
 2018-02-01 21:09  1.1.0
 2018-01-31 16:51  1.0.7
 2017-05-02 13:27  1.0.6
@@ -3423,8 +3240,7 @@ Presently in use: org.scala-lang.modules:scala-parser-combinators_2.11  1.0.1
 
 ========================================================================
 Presently in use: org.scala-lang.modules:scala-xml_2.11  1.0.1
- - a level        7 dependency among 1 (possibly transitive) uses
-
+   - a level 7 dependencies among 1 (possibly transitive) uses
 2016-09-20 09:26  1.0.6
 2015-07-24 19:12  1.0.5
 2014-12-04 20:18  1.0.3
@@ -3433,8 +3249,7 @@ Presently in use: org.scala-lang.modules:scala-xml_2.11  1.0.1
 
 ========================================================================
 Presently in use: org.scala-lang:scala-compiler  2.11.0
- - a level        6 dependency among 1 (possibly transitive) uses
-
+   - a level 6 dependencies among 1 (possibly transitive) uses
 2018-01-31 04:20  2.13.0-M3
 2017-11-03 20:07  2.10.7
 2017-11-03 01:37  2.11.12
@@ -3473,8 +3288,7 @@ Presently in use: org.scala-lang:scala-compiler  2.11.0
 
 ========================================================================
 Presently in use: org.scala-lang:scala-library  2.11.8
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-31 04:19  2.13.0-M3
 2017-11-03 20:06  2.10.7
 2017-11-03 01:37  2.11.12
@@ -3500,8 +3314,7 @@ Presently in use: org.scala-lang:scala-library  2.11.8
 
 ========================================================================
 Presently in use: org.scala-lang:scala-reflect  2.11.8
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2018-01-31 04:17  2.13.0-M3
 2017-11-03 20:07  2.10.7
 2017-11-03 01:37  2.11.12
@@ -3527,8 +3340,7 @@ Presently in use: org.scala-lang:scala-reflect  2.11.8
 
 ========================================================================
 Presently in use: org.scala-lang:scalap  2.11.0
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2018-01-31 04:19  2.13.0-M3
 2017-11-03 20:07  2.10.7
 2017-11-03 01:37  2.11.12
@@ -3567,8 +3379,7 @@ Presently in use: org.scala-lang:scalap  2.11.0
 
 ========================================================================
 Presently in use: org.slf4j:jcl-over-slf4j  1.7.16
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-03-16 16:37  1.7.25
 2017-02-24 11:06  1.7.24
 2017-02-14 22:32  1.7.23
@@ -3581,8 +3392,7 @@ Presently in use: org.slf4j:jcl-over-slf4j  1.7.16
 
 ========================================================================
 Presently in use: org.slf4j:jul-to-slf4j  1.7.16
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-03-16 16:37  1.7.25
 2017-02-24 11:06  1.7.24
 2017-02-14 22:32  1.7.23
@@ -3595,8 +3405,7 @@ Presently in use: org.slf4j:jul-to-slf4j  1.7.16
 
 ========================================================================
 Presently in use: org.slf4j:slf4j-api  1.7.12
- - a level        2 dependency among 3 (possibly transitive) uses
-
+   - a level 2 dependencies among 3 (possibly transitive) uses
 2017-03-16 16:36  1.7.25
 2017-02-24 11:05  1.7.24
 2017-02-14 22:31  1.7.23
@@ -3613,8 +3422,7 @@ Presently in use: org.slf4j:slf4j-api  1.7.12
 
 ========================================================================
 Presently in use: org.slf4j:slf4j-api  1.7.16
- - a level        5 dependency among 3 (possibly transitive) uses
-
+   - a level 5 dependencies among 3 (possibly transitive) uses
 2017-03-16 16:36  1.7.25
 2017-02-24 11:05  1.7.24
 2017-02-14 22:31  1.7.23
@@ -3627,8 +3435,7 @@ Presently in use: org.slf4j:slf4j-api  1.7.16
 
 ========================================================================
 Presently in use: org.slf4j:slf4j-api  1.7.21
- - a level        5 dependency among 3 (possibly transitive) uses
-
+   - a level 5 dependencies among 3 (possibly transitive) uses
 2017-03-16 16:36  1.7.25
 2017-02-24 11:05  1.7.24
 2017-02-14 22:31  1.7.23
@@ -3637,8 +3444,7 @@ Presently in use: org.slf4j:slf4j-api  1.7.21
 
 ========================================================================
 Presently in use: org.slf4j:slf4j-log4j12  1.7.16
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-03-16 16:37  1.7.25
 2017-02-24 11:05  1.7.24
 2017-02-14 22:32  1.7.23
@@ -3651,8 +3457,7 @@ Presently in use: org.slf4j:slf4j-log4j12  1.7.16
 
 ========================================================================
 Presently in use: org.slf4j:slf4j-simple  1.7.21
- - a level        1 dependency among 1 (possibly transitive) uses
-
+   - a level 1 dependencies among 1 (possibly transitive) uses
 2017-03-16 16:36  1.7.25
 2017-02-24 11:05  1.7.24
 2017-02-14 22:31  1.7.23
@@ -3661,14 +3466,12 @@ Presently in use: org.slf4j:slf4j-simple  1.7.21
 
 ========================================================================
 Presently in use: org.spark-project.spark:unused  1.0.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2014-10-22 07:00  1.0.0 ***
 
 ========================================================================
 Presently in use: org.tukaani:xz  1.0
- - a level        6 dependency among 2 (possibly transitive) uses
-
+   - a level 6 dependencies among 2 (possibly transitive) uses
 2018-01-04 16:09  1.8
 2017-12-29 16:36  1.7
 2016-11-27 11:38  1.6
@@ -3681,8 +3484,7 @@ Presently in use: org.tukaani:xz  1.0
 
 ========================================================================
 Presently in use: org.tukaani:xz  1.4
- - a level        9 dependency among 2 (possibly transitive) uses
-
+   - a level 9 dependencies among 2 (possibly transitive) uses
 2018-01-04 16:09  1.8
 2017-12-29 16:36  1.7
 2016-11-27 11:38  1.6
@@ -3691,8 +3493,7 @@ Presently in use: org.tukaani:xz  1.4
 
 ========================================================================
 Presently in use: org.twitter4j:twitter4j-core  4.0.1
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2016-12-25 12:57  4.0.6
 2016-09-13 17:10  4.0.5
 2015-03-28 15:40  4.0.3
@@ -3701,8 +3502,7 @@ Presently in use: org.twitter4j:twitter4j-core  4.0.1
 
 ========================================================================
 Presently in use: org.twitter4j:twitter4j-stream  4.0.1
- - a level        2 dependency among 1 (possibly transitive) uses
-
+   - a level 2 dependencies among 1 (possibly transitive) uses
 2016-12-25 12:58  4.0.6
 2016-09-13 17:11  4.0.5
 2015-03-28 15:42  4.0.3
@@ -3711,8 +3511,7 @@ Presently in use: org.twitter4j:twitter4j-stream  4.0.1
 
 ========================================================================
 Presently in use: org.xerial.snappy:snappy-java  1.1.2.6
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-12-07 19:51  1.1.7.1
 2017-12-01 01:00  1.1.7
 2017-05-22 16:05  1.1.4
@@ -3725,29 +3524,25 @@ Presently in use: org.xerial.snappy:snappy-java  1.1.2.6
 
 ========================================================================
 Presently in use: org.yaml:snakeyaml  1.17
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2017-10-14 11:45  1.19
 2017-02-22 13:18  1.18
 2016-02-19 13:13  1.17 ***
 
 ========================================================================
 Presently in use: oro:oro  2.0.8
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2005-09-20 05:50  2.0.8 ***
 
 ========================================================================
 Presently in use: xalan:xalan  2.7.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2014-07-24 18:48  2.7.2
 2005-09-20 05:52  2.7.0 ***
 
 ========================================================================
 Presently in use: xerces:xercesImpl  2.8.0
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2013-02-20 20:20  2.11.0
 2011-08-15 22:32  2.10.0
 2010-05-20 08:54  2.6.2-jaxb-1.0.6
@@ -3758,8 +3553,7 @@ Presently in use: xerces:xercesImpl  2.8.0
 
 ========================================================================
 Presently in use: xml-apis:xml-apis  1.3.03
- - a level        3 dependency among 1 (possibly transitive) uses
-
+   - a level 3 dependencies among 1 (possibly transitive) uses
 2011-08-20 00:11  1.4.01
 2010-02-03 21:05  1.2.01
 2006-12-22 13:37  1.3.04
@@ -3767,9 +3561,9 @@ Presently in use: xml-apis:xml-apis  1.3.03
 
 ========================================================================
 Presently in use: xmlenc:xmlenc  0.52
- - a level        5 dependency among 1 (possibly transitive) uses
-
+   - a level 5 dependencies among 1 (possibly transitive) uses
 2005-09-20 05:53  0.33
 2005-09-20 05:53  0.20
 unknown-date unknown:time  0.52 ***
+
 ```

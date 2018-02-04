@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Copyright Paul Hammant, 2018
@@ -17,9 +17,9 @@ mvn dependency:tree | sed '/Total time/q' > .deps/mvn-dep-tree-output.txt # befo
 cat .deps/mvn-dep-tree-output.txt | sed 's/|/ /g' | sed 's/+-/  /' | sed 's/\\-/  /' | sed 's/\[INFO\]//' | sed /^---/d \
     | sed /:/!d | sed /:$/d | sed '/Total time/d' | sed /\[WARNING[]]/d \
     | sed 's/   / /g' | sed 's/^ //' | sed /::/d \
-    | sed 's/maven-dependency-plugin\:[0-9\.]*\:tree (default-cli) @ //' > .deps/dependencies-tree.txt
+    | sed 's/maven-dependency-plugin:[0-9\.]*:tree (default-cli) @ //' > .deps/dependencies-tree.txt
 
-cat .deps/dependencies-tree.txt | sed 's/ //g' | grep "\:" | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
+cat .deps/dependencies-tree.txt | sed 's/ //g' | grep ":" | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
 
 echo "" > .deps/big-dependency-report.txt
 
@@ -31,7 +31,7 @@ do
 
     cat .deps/curl-output.txt | pr -t -e=2 | sed 's/\-         \-/unknown-date unknown:time/g' | sed 's/ \- //g' \
       | sed -E -e 's/[[:blank:]]+/ /g' | sed 's/\<//g' | sed 's/\"/ /g' | sed 's/^a //' | sed 's/\>//g' \
-      | grep href | sed '/maven-metadata/d' | sed 's/.*title= //' | sed '/\.\./d' | grep '\:' \
+      | grep href | sed '/maven-metadata/d' | sed 's/.*title= //' | sed '/\.\./d' | grep ':' \
       | sed -E 's/(.*) (.*) (.*) (.*) (.*) (.*) (.*)/\5 \6 \1/' \
       | sed 's/href //g' | sed 's/\///' | sed '/-[aA]lpha[\.]*[0-9]* /d' | sed '/-[bB]eta[\.]*[0-9]* /d' \
       | sed '/-[Rr][Cc][\.]*[0-9]* /d' | sed '/-SNAPSHOT /d' \
@@ -41,12 +41,12 @@ do
 
     cat .deps/tmp_list_of_versions_with_current_indicated.txt | sed "/ $version \*\*\*$/q" > .deps/tmp_list_of_versions_since_current.txt
 
-    echo "\n========================================================================\nPresently in use: $group:$artifact  $version" >> .deps/big-dependency-report.txt
+    printf "\n========================================================================\nPresently in use: $group:$artifact  $version\n" >> .deps/big-dependency-report.txt
 
     matches=$(cat .deps/dependencies-tree.txt | grep "$group:$artifact")
     matchesCount=$(echo "$matches" | wc -l | tr -d '[:space:]')
-    leastTransitiveDep=$(echo "$matches" | sort | tail -1 | tr -cd ' ' | wc -m)
-    echo " - a level $leastTransitiveDep dependency among $matchesCount (possibly transitive) uses\n" >> .deps/big-dependency-report.txt
+    leastTransitiveDep=$(echo "$matches" | sort | tail -1 | tr -cd ' ' | wc -m | sed 's/ *//g')
+    printf "   - a level $leastTransitiveDep dependencies among $matchesCount (possibly transitive) uses\n" >> .deps/big-dependency-report.txt
 
     cat  .deps/tmp_list_of_versions_since_current.txt >> .deps/big-dependency-report.txt
 
@@ -54,14 +54,14 @@ do
 
     if ! [ "$version" == "$prospectiveVersion" ]
     then
-        sed -E -i '' "s/(.* ${group}\:${artifact}\:[^ ]*)$/\1  > ${prospectiveVersion}/" .deps/dependencies-tree.txt
+        sed -E -i '' "s/(.* ${group}:${artifact}:[^ ]*)$/\1  > ${prospectiveVersion}/" .deps/dependencies-tree.txt
     fi
-
-    rm .deps/curl-output.txt
-    rm .deps/tmp_list_of_versions_since_current.txt
-    rm .deps/tmp_list_of_versions.txt
-    rm .deps/tmp_list_of_versions_with_current_indicated.txt
 
 done < .deps/flattened-unique-gavs.txt
 
 cat .deps/dependencies-tree.txt | sed '/^  /d' | grep '>' | sort | uniq > .deps/immediate-upgrade-opportunities.txt
+
+rm .deps/curl-output.txt
+rm .deps/tmp_list_of_versions_since_current.txt
+rm .deps/tmp_list_of_versions.txt
+rm .deps/tmp_list_of_versions_with_current_indicated.txt
