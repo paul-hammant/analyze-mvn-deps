@@ -13,6 +13,7 @@ fi
 
 mvn dependency:tree > /dev/null # do downloads first...
 mvn dependency:tree | sed '/Total time/q' > .deps/mvn-dep-tree-output.txt # before generating smallest report
+echo "Dependency tree for current directory acquired"
 
 cat .deps/mvn-dep-tree-output.txt | sed 's/|/ /g' | sed 's/+-/  /' | sed 's/\\-/  /' | sed 's/\[INFO\]//' | sed /^---/d \
     | sed /:/!d | sed /:$/d | sed '/Total time/d' | sed /\[WARNING[]]/d \
@@ -54,7 +55,10 @@ do
 
     if ! [ "$version" == "$prospectiveVersion" ]
     then
-        sed -E -i '' "s/(.* ${group}:${artifact}:[^ ]*)$/\1  > ${prospectiveVersion}/" .deps/dependencies-tree.txt
+        echo "Analyzing ${group}:${artifact}"
+        # Dammit, sed -i has no common args for Mac and Linux
+        cat .deps/dependencies-tree.txt | sed -E "s/(.* ${group}:${artifact}:[^ ]*)$/\1  \> ${prospectiveVersion}/" > .deps/dependencies-tree.txtNEW
+        mv .deps/dependencies-tree.txtNEW .deps/dependencies-tree.txt # could have used sponge but may not be installed.
     fi
 
 done < .deps/flattened-unique-gavs.txt
@@ -65,3 +69,5 @@ rm .deps/curl-output.txt
 rm .deps/tmp_list_of_versions_since_current.txt
 rm .deps/tmp_list_of_versions.txt
 rm .deps/tmp_list_of_versions_with_current_indicated.txt
+
+echo "Check the .deps/ directory"
