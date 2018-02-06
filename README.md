@@ -47,7 +47,9 @@ an 'upstream' team should attend to their upgrades (assuming you are on the late
 
 ## Examples of output for the excellent Hazelcast [github.com/hazelcast/hazelcast-jet-demos](https://github.com/hazelcast/hazelcast-jet-demos)
 
-Lines that end in `> N.n.n` are a suggested version upgrade (notwisthanding the glitches mentioned above)
+Lines that end in `> N.n.n` are a suggested version upgrade (notwithstanding the glitches mentioned above)
+
+Note: the Hazelcast dev team [speedily consumed upgrade suggestions](https://github.com/hazelcast/hazelcast-jet-demos/commit/289f64a606c00f55dbd26366edf5a7a07648f950) :)
 
 ### The dependency-tree.txt file
 
