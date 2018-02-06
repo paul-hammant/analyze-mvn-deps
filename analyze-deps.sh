@@ -11,7 +11,9 @@ if ! [ -d ".deps" ]; then
   mkdir .deps
 fi
 
-mvn dependency:tree > /dev/null # do downloads first...
+echo "Getting dependency tree for current directory"
+# do downloads first...
+mvn dependency:tree > .deps/mvn-dep-tree-output.txt
 mvn dependency:tree | sed '/Total time/q' > .deps/mvn-dep-tree-output.txt # before generating smallest report
 echo "Dependency tree for current directory acquired"
 

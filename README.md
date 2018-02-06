@@ -6,14 +6,16 @@ It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugi
 
 ## Running it
 
-First `cd` to your clone/checkout (where the room pom.xml is) and
+First `cd` to your clone/checkout (where the room pom.xml is) and then:
 
 ```
 $ bash <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-deps/master/analyze-deps.sh)
 ```
-That works on Mac, and might work on Linux too - lemme know. Oh and I just wanted to see how far I could get in shell script alone wthout resprting to Python and Java (like the existing plugins for this).
+That works on Mac and Linux. It probably will not work on the Linux-Subsystem-For-Windows (can someone let me know?). 
 
-## The results from runnng the script
+Oh and I just wanted to see how far I could get in shell script alone without resorting to Java (like the existing plugins for this). Or Python which might would only have 3x the lines of code, but could get past some semantic versioning / dewey decimal issues (see glitch #4 below).
+
+## The results from running the script
 
 After running the script, peer inside the `.deps/` folder and look at the generated files:
 
