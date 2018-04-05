@@ -69,9 +69,7 @@ for l in flattened_unique_gavs:
     try:
         r = requests.get("http://central.maven.org/maven2/"+ groupDir + "/" + artifact)
     except requests.exceptions.RequestException:
-        print("Failure: ", r.status_code)
-        print(r.url)
-        print(l)
+        print("Connection troubles for package:", l)
         continue
     req_lines = r.text.split("\n")
     #print("\n".join(req_lines))
