@@ -15,8 +15,17 @@ else:
 
 print("Getting dependency tree for current directory")
 
-rawoutput = subprocess.check_output(["mvn", "dependency:tree"]).decode('utf-8').split('\n')
-output = []
+try:
+    rawoutput = subprocess.check_output(["mvn", "dependency:tree"]).decode('utf-8').split('\n')
+    output = []
+except subprocess.SubprocessError as e:
+    print("Some problems occured with: ", e.cmd)
+    print("Return code: ", e.returncode)
+    with open("error.log", "w") as errorFile:
+        errorFile.write(e.output.decode("utf-8"))
+        print("Check error.log for details")
+    exit(1)
+
 
 with open(".deps/mvn-dep-tree-output.txt", "w") as mvn_dep_tree_output:
     for l in rawoutput:
