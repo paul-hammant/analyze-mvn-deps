@@ -22,7 +22,7 @@ cat .deps/mvn-dep-tree-output.txt | sed 's/|/ /g' | sed 's/+-/  /' | sed 's/\\-/
     | sed 's/   / /g' | sed 's/^ //' | sed /::/d \
     | sed 's/maven-dependency-plugin:[0-9\.]*:tree (default-cli) @ //' > .deps/dependencies-tree.txt
 
-cat .deps/dependencies-tree.txt | sed 's/ //g' | grep ":" | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
+cat .deps/dependencies-tree.txt | sed 's/ //g' | grep ":" | grep -P -v '\-+<.*>\-+' | cut -d':' -f 1,2,3,4 | sort | uniq > .deps/flattened-unique-gavs.txt
 
 echo "" > .deps/big-dependency-report.txt
 

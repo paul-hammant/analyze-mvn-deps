@@ -60,7 +60,7 @@ with open(".deps/dependencies-tree.txt", "w") as f:
 #print("\n".join(dependency_tree))
 #input("Dependency tree, press Enter")
 
-flattened_unique_gavs = [":".join(s.replace(" ", "").split(":")[:4]) for s in dependency_tree if ":" in s]
+flattened_unique_gavs = [":".join(s.replace(" ", "").split(":")[:4]) for s in dependency_tree if ":" in s and re.search("-+<.*>-+", s) is None]
 flattened_unique_gavs = sorted(list(set(flattened_unique_gavs)))
 
 with open(".deps/flattened-unique-gavs.txt", "w") as f:
@@ -72,7 +72,7 @@ with open(".deps/flattened-unique-gavs.txt", "w") as f:
 for l in flattened_unique_gavs:
     #if l == 'com.esotericsoftware:minlog:jar:1.3.0':
         #do_input = True
-    group, artifact, type, version = l.split(":")
+    group, artifact, typ, version = l.split(":")
     #print(l.split(":"))
     groupDir = group.replace(".", "/")
     try:
