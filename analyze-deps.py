@@ -8,10 +8,10 @@ import requests
 #import pysed
 
 
-if not os.path.isfile(".deps") and not os.path.isdir(".deps"):
-    os.mkdir(".deps")
-else:
-    exit()
+if os.path.isfile(".deps") or os.path.isdir(".deps"):
+    os.rmdir(".deps")
+
+os.mkdir(".deps")
 
 print("Getting dependency tree for current directory")
 
@@ -25,7 +25,6 @@ except subprocess.SubprocessError as e:
         errorFile.write(e.output.decode("utf-8"))
         print("Check error.log for details")
     exit(1)
-
 
 with open(".deps/mvn-dep-tree-output.txt", "w") as mvn_dep_tree_output:
     for l in rawoutput:
