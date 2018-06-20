@@ -1,6 +1,6 @@
 # analyze-deps: An alternative Maven dependency analyzer.
 
-A Bash script to analyze Maven dependency upgrade opportunities.
+A Python3 script to analyze Maven dependency upgrade opportunities.
 
 It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin/) and [versions-maven-plugin](http://www.mojohaus.org/versions-maven-plugin/) (and maybe others) that are written in Java.
 
@@ -9,11 +9,11 @@ It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugi
 First `cd` to your clone/checkout (where the room pom.xml is) and then:
 
 ```
-$ bash <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-deps/master/analyze-deps.sh)
+$ python3 <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-deps/master/analyze-deps.py)
 ```
 That works on Mac and Linux. It probably will not work on the Linux-Subsystem-For-Windows (can someone let me know?). 
 
-Oh and I just wanted to see how far I could get in shell script alone without resorting to Java (like the existing plugins for this). Or Python which might would only have 3x the lines of code, but could get past some semantic versioning / dewey decimal issues (see glitch #4 below).
+History: I just wanted to see how far I could get in shell script alone without resorting to Java (like the existing plugins for this). Or Python which might would only have 3x the lines of code, but could get past some semantic versioning / dewey decimal issues (see glitch #4 below). Turns out only so far, and this has now been ported to Python3 by Ilia Mikhnevich.
 
 ## The results from running the script
 
