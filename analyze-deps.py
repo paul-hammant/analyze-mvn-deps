@@ -5,6 +5,7 @@ import sys
 import subprocess
 import re
 import requests
+from natsort import natsorted
 #import pysed
 
 
@@ -103,7 +104,9 @@ for l in flattened_unique_gavs:
         p = list(p[0])
         p = list(map(lambda x: x.strip(), p))
         list_of_versions.append(p)
-    list_of_versions.sort(reverse=True, key=lambda s: s[1])
+    #print(list_of_versions)
+    list_of_versions = natsorted(list_of_versions, key=lambda x: x[0], reverse=True)
+    #list_of_versions.sort(reverse=True, key=lambda x: LooseVersion(x[0]))
     #print("List of versions sorted: ")
     #print(list_of_versions)
     list_of_versions_with_current = list_of_versions
