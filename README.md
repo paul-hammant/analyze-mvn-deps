@@ -7,6 +7,8 @@ It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugi
 ## Running it
 
 First `cd` to your clone/checkout (where the room pom.xml is) and then:
+### Script dependencies
+The script uses [natsort](https://pypi.org/project/natsort/)([docs](https://natsort.readthedocs.io/en/master/)) and [requests](https://pypi.org/project/requests/)([docs](http://docs.python-requests.org/en/master/))
 
 ```
 $ python3 <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-deps/master/analyze-deps.py)
