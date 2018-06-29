@@ -6,11 +6,12 @@ import subprocess
 import re
 import requests
 from natsort import natsorted
+import shutil
 #import pysed
 
 
 if os.path.isfile(".deps") or os.path.isdir(".deps"):
-    os.rmdir(".deps")
+    shutil.rmtree(".deps")
 
 os.mkdir(".deps")
 
