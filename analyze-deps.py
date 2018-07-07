@@ -10,9 +10,9 @@ import shutil
 
 
 def recommended_version_upgrades(version_now, available_versions_str):
-    availavle_versions = available_versions_str.split(", ")
+    available_versions = available_versions_str.split(", ")
     normalized_available_versions = []
-    for ver_avail in availavle_versions:
+    for ver_avail in available_versions:
         ver_avail = ver_avail.lower()
 
         matches = re.search("(\d)([a-z])", ver_avail)
@@ -26,7 +26,12 @@ def recommended_version_upgrades(version_now, available_versions_str):
 
     sorted_versions = sorted(normalized_available_versions, reverse=True)
 
-    return availavle_versions[normalized_available_versions.index(sorted_versions[0])]
+    highest = available_versions[normalized_available_versions.index(sorted_versions[0])]
+
+    if highest == version_now:
+        return ""
+
+    return highest
 
 
 if __name__ == "__main__":

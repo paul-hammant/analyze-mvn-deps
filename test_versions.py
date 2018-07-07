@@ -86,15 +86,19 @@ class TestVersions(TestCase):
 
     def test_17(self):
 
-        self.assertEqual("4.1.M1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1"))
+        self.assertEqual("4.1-M1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-M1"))
 
     def test_18(self):
 
-        self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1, 4.1"))
+        self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-M1, 4.1"))
 
-    def test_18(self):
+    def test_19(self):
 
         self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1alpha, 4.1beta, 4.1M1, 4.1"))
+
+    def test_20(self):
+
+        self.assertEqual("", recommended_version_upgrades("4.1", "4.1alpha, 4.1beta, 4.1M1, 4.1"))
 
 
 if __name__ == '__main__':
