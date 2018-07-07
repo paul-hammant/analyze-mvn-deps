@@ -4,11 +4,8 @@ import unittest
 from unittest import TestCase
 from importlib import reload
 
-
-from mock import Mock, call
-from mockextras import stub
 import os
-from testing_proxy import recommended_versions
+from testing_proxy import recommended_version_upgrades
 
 sys.path = [os.path.abspath(os.path.join('..', os.pardir))] + sys.path
 
@@ -25,75 +22,79 @@ class TestVersions(TestCase):
 
     def test_01(self):
 
-        self.assertEqual("4.997", recommended_versions("4.0.1", "3.999, 2.998, 4.997"))
+        self.assertEqual("4.997", recommended_version_upgrades("4.0.1", "3.999, 2.998, 4.997"))
 
     def test_02(self):
 
-        self.assertEqual("4.997", recommended_versions("4.0.1", "4.997, 3.999, 2.998"))
+        self.assertEqual("4.997", recommended_version_upgrades("4.0.1", "4.997, 3.999, 2.998"))
 
     def test_03(self):
 
-        self.assertEqual("4.996", recommended_versions("4.0.1", "3.999, 4.996, 4.9.9"))
+        self.assertEqual("4.996", recommended_version_upgrades("4.0.1", "3.999, 4.996, 4.9.9"))
 
     def test_04(self):
 
-        self.assertEqual("4.9.1.1, 5.3.2", recommended_versions("4.0.1", "3.9.1, 4.9.1, 4.9.0, 4.9.1.1, 5.3.2"))
+        self.assertEqual("4.9.1.1, 5.3.2", recommended_version_upgrades("4.0.1", "3.9.1, 4.9.1, 4.9.0, 4.9.1.1, 5.3.2"))
 
     def test_05(self):
 
-        self.assertEqual("4.0.9, 4.9.1.1, 6.3.2", recommended_versions("4.0.1", "3.9.1, 4.9.1, 4.0.9, 4.9.1.1, 5.2, 6.3.2")) # three upgrade choices - N, N.N and N.N.N based
+        self.assertEqual("4.0.9, 4.9.1.1, 6.3.2", recommended_version_upgrades("4.0.1", "3.9.1, 4.9.1, 4.0.9, 4.9.1.1, 5.2, 6.3.2")) # three upgrade choices - N, N.N and N.N.N based
 
     def test_06(self):
 
-        self.assertEqual("4.1-RC2", recommended_versions("4.0.1", "4.1-beta1, 4.1-RC1, 4.1-RC2"))
+        self.assertEqual("4.1-RC2", recommended_version_upgrades("4.0.1", "4.1-beta1, 4.1-RC1, 4.1-RC2"))
 
     def test_07(self):
 
-        self.assertEqual("4.1.0.RC2", recommended_versions("4.0.1", "4.1.0.beta1, 4.1.0.RC1, 4.1.0.RC2"))
+        self.assertEqual("4.1.0.RC2", recommended_version_upgrades("4.0.1", "4.1.0.beta1, 4.1.0.RC1, 4.1.0.RC2"))
 
     def test_08(self):
 
-        self.assertEqual("4.1", recommended_versions("4.0.1", "4.1-beta1, 4.1-RC1, 4.1"))
+        self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1-beta1, 4.1-RC1, 4.1"))
 
     def test_09(self):
 
-        self.assertEqual("4.1-beta2", recommended_versions("4.0.1", "4.1-beta1, 4.1-alpha1, 4.1-alpha2, 4.1-beta1"))
+        self.assertEqual("4.1-beta2", recommended_version_upgrades("4.0.1", "4.1-beta1, 4.1-alpha1, 4.1-alpha2, 4.1-beta2"))
 
     def test_10(self):
 
-        self.assertEqual("4.1-beta", recommended_versions("4.0.1", "4.1-beta, 4.1-alpha1, 4.1-alpha2"))
+        self.assertEqual("4.1-beta", recommended_version_upgrades("4.0.1", "4.1-beta, 4.1-alpha1, 4.1-alpha2"))
 
     def test_11(self):
 
-        self.assertEqual("4.1-beta2", recommended_versions("4.0.1", "4.1-beta, 4.1-beta1, 4.1-beta2"))
+        self.assertEqual("4.1-beta2", recommended_version_upgrades("4.0.1", "4.1-beta, 4.1-beta1, 4.1-beta2"))
 
     def test_12(self):
 
-        self.assertEqual("4.1-alpha2", recommended_versions("4.0.1", "4.1-alpha, 4.1-alpha1, 4.1-alpha2"))
+        self.assertEqual("4.1-alpha2", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-alpha1, 4.1-alpha2"))
 
     def test_13(self):
 
-        self.assertEqual("4.1-FINAL", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1-FINAL"))
+        self.assertEqual("4.1-FINAL", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-FINAL"))
 
     def test_14(self):
 
-        self.assertEqual("4.1-final", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1-final"))
+        self.assertEqual("4.1-final", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-final"))
 
     def test_15(self):
 
-        self.assertEqual("4.1-RELEASE", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1-RELEASE"))
+        self.assertEqual("4.1-RELEASE", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-RELEASE"))
 
     def test_16(self):
 
-        self.assertEqual("4.1-release", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1-release"))
+        self.assertEqual("4.1-release", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1-release"))
 
     def test_17(self):
 
-        self.assertEqual("4.1.M1", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1"))
+        self.assertEqual("4.1.M1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1"))
 
     def test_18(self):
 
-        self.assertEqual("4.1", recommended_versions("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1, 4.1"))
+        self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1-alpha, 4.1-beta, 4.1.M1, 4.1"))
+
+    def test_18(self):
+
+        self.assertEqual("4.1", recommended_version_upgrades("4.0.1", "4.1alpha, 4.1beta, 4.1M1, 4.1"))
 
 
 if __name__ == '__main__':

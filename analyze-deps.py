@@ -7,11 +7,26 @@ import re
 import requests
 from natsort import natsorted
 import shutil
-#import pysed
 
 
-def recommended_versions(version_now, versions_available):
-    return "TODO"
+def recommended_version_upgrades(version_now, available_versions_str):
+    availavle_versions = available_versions_str.split(", ")
+    normalized_available_versions = []
+    for ver_avail in availavle_versions:
+        ver_avail = ver_avail.lower()
+
+        matches = re.search("(\d)([a-z])", ver_avail)
+        if matches:
+            ver_avail = ver_avail.replace(matches.group(1)+matches.group(2),
+                                          matches.group(1)+ "-" + matches.group(2))
+        if "beta" not in ver_avail and "alpha" not in ver_avail \
+                and "rc" not in ver_avail and "m" not in ver_avail:
+            ver_avail = ver_avail + "-zzz"
+        normalized_available_versions.append(ver_avail)
+
+    sorted_versions = sorted(normalized_available_versions, reverse=True)
+
+    return availavle_versions[normalized_available_versions.index(sorted_versions[0])]
 
 
 if __name__ == "__main__":
