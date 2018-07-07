@@ -9,8 +9,7 @@ from natsort import natsorted
 import shutil
 
 
-def recommended_version_upgrades(version_now, available_versions_str):
-    available_versions = available_versions_str.split(", ")
+def recommended_version_upgrades(version_now, available_versions):
     normalized_available_versions = []
     for ver_avail in available_versions:
         ver_avail = ver_avail.lower()
