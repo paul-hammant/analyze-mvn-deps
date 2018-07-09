@@ -34,11 +34,11 @@ class TestVersions(TestCase):
 
     def test_04(self):
 
-        self.assertEqual("4.9.1.1, 5.3.2", recommended_version_upgrades("4.0.1", ["3.9.1", "4.9.1", "4.9.0", "4.9.1.1", "5.3.2"]))
+        self.assertEqual("5.3.2, 4.9.1.1", recommended_version_upgrades("4.0.1", ["3.9.1", "4.9.1", "4.9.0", "4.9.1.1", "5.3.2"]))
 
     def test_05(self):
 
-        self.assertEqual("4.0.9, 4.9.1.1, 6.3.2", recommended_version_upgrades("4.0.1", ["3.9.1", "4.9.1", "4.0.9", "4.9.1.1", "5.2", "6.3.2"])) # three upgrade choices - N, N.N and N.N.N based
+        self.assertEqual("6.3.2, 4.9.1.1, 4.0.9", recommended_version_upgrades("4.0.1", ["3.9.1", "4.9.1", "4.0.9", "4.9.1.1", "5.2", "6.3.2"])) # three upgrade choices - N, N.N and N.N.N based
 
     def test_06(self):
 

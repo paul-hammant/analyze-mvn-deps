@@ -9,7 +9,7 @@ from natsort import natsorted
 import shutil
 
 
-def recommended_version_upgrades(version_now, available_versions):
+def highest_upgrade_for(version_now, available_versions):
     normalized_available_versions = []
     for ver_avail in available_versions:
         ver_avail = ver_avail.lower()
@@ -31,6 +31,29 @@ def recommended_version_upgrades(version_now, available_versions):
         return ""
 
     return highest
+
+
+def recommended_version_upgrades(version_now, available_versions):
+
+    upg = highest_upgrade_for(version_now, available_versions)
+
+    if upg == version_now:
+        return ""
+
+    # Look for point revision upgrades
+    munged_version = version_now
+    while len(munged_version) > 0:
+        subset_list = []
+        for ver_avail in available_versions:
+            if ver_avail.startswith(munged_version):
+                subset_list.append(ver_avail)
+        if len(subset_list) > 0:
+            another_possible_upgrade = highest_upgrade_for(munged_version, subset_list)
+            if another_possible_upgrade != "" and another_possible_upgrade != version_now and another_possible_upgrade not in upg:
+                upg =  upg + ", " + another_possible_upgrade
+        munged_version = ".".join(munged_version.split(".")[:-1])
+
+    return ", ".join(sorted(upg.split(", "), reverse=True))
 
 
 if __name__ == "__main__":
