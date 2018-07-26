@@ -94,7 +94,7 @@ if __name__ == "__main__":
     with open(".deps/dependencies-tree.txt", "w") as f:
         for l in output:
             s = l.replace("|", " ").replace("+-", "  ").replace("\\-", "  ").replace("[INFO]", "")
-            if re.search("^---", s) is None:
+            if "---" not in s:
                 if re.search(":", s) is not None:
                     if re.search(":$", s) is None:
                         if not "Total time" in s and not "[WARNING]" in s:
