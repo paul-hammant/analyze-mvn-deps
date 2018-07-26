@@ -66,7 +66,7 @@ com.google.guava:guava:r0
 banned_gav_list = banned_gavs.split("\n")
 
 def banned(group, artifact, version):
-    gav = (group + ":" + artifact + ":" + version)
+    gav = ":".join([group, artifact, version])
     for banned_gav in banned_gav_list:
         if banned_gav is not "" and banned_gav in gav:
             return True
@@ -110,6 +110,25 @@ def write_to_text_dependencies_tree_output():
     return dependency_tree
 
 
+def determine_list_of_versions():
+    list_of_versions = []
+    r = requests.get("http://central.maven.org/maven2/" + groupDir + "/" + artifact)
+    req_lines = r.text.split("\n")
+    req_lines = list(map(lambda x: re.sub("\-         \-", "unknown-date unknown:time", x), req_lines))
+    req_lines = list(map(lambda x: re.sub("\W+-\W+$", "", x), req_lines))
+    req_lines = list(filter(lambda x: "href" in x and not "maven-metadata" in x and not ">../</" in x, req_lines))
+    for line2 in req_lines:
+        p = re.findall(".*>(.*)/</a>(.*)", line2)
+        if len(p) == 0:
+            continue
+        p = list(p[0])
+        p = list(map(lambda x: x.strip(), p))
+        p = p[0]
+        if not banned(group, artifact, p):
+            list_of_versions.append(p)
+    return list_of_versions
+
+
 if __name__ == "__main__":
 
     if os.path.isfile(".deps") or os.path.isdir(".deps"):
@@ -140,28 +159,15 @@ if __name__ == "__main__":
     with open(".deps/flattened-unique-gavs.txt", "w") as f:
         f.write("\n".join(flattened_unique_gavs))
 
-    for l in flattened_unique_gavs:
-        group, artifact, typ, version = l.split(":")
+    for line in flattened_unique_gavs:
+        group, artifact, typ, version = line.split(":")
         groupDir = group.replace(".", "/")
-        try:
-            r = requests.get("http://central.maven.org/maven2/"+ groupDir + "/" + artifact)
-        except requests.exceptions.RequestException:
-            print("Connection troubles for package:", l)
-            continue
-        req_lines = r.text.split("\n")
-        req_lines = list(map(lambda x: re.sub("\-         \-", "unknown-date unknown:time", x), req_lines))
-        req_lines = list(map(lambda x: re.sub("\W+-\W+$", "", x), req_lines))
-        req_lines = list(filter(lambda x: "href" in x and not "maven-metadata" in x and not ">../</" in x, req_lines))
         list_of_versions = []
-        for l in req_lines:
-            p = re.findall(".*>(.*)/</a>(.*)", l)
-            if len(p) == 0:
-                continue
-            p = list(p[0])
-            p = list(map(lambda x: x.strip(), p))
-            p = p[0]
-            if not banned(group, artifact, p):
-                list_of_versions.append(p)
+        try:
+            list_of_versions = determine_list_of_versions()
+        except requests.exceptions.RequestException:
+            print("Connection problems for GAV:", ":".join([group, artifact, typ, version]))
+            continue
         list_of_versions = (recommended_version_upgrades(version, list_of_versions)).split(", ")
         list_of_versions_with_current = list_of_versions
         current_index = None
