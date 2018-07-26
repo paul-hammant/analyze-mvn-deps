@@ -61,7 +61,7 @@ commons-beanutils:commons-beanutils:dev
 commons-beanutils:commons-beanutils:2002
 commons-beanutils:commons-beanutils:2003
 commons-lang:commons-lang:2003
-com.google.guava:guava:r08
+com.google.guava:guava:r0
 """
 
 banned_gav_list = banned_gavs.split("\n")
@@ -72,6 +72,44 @@ def banned(group, artifact, version):
         if banned_gav is not "" and banned_gav in gav:
             return True
     return False
+
+if __name__ == "__main__":
+
+    if os.path.isfile(".deps") or os.path.isdir(".deps"):
+        shutil.rmtree(".deps")
+
+    os.mkdir(".deps")
+
+
+def parse_dependencies_from_maven_output():
+    with open(".deps/mvn-dep-tree-output.txt", "w") as mvn_dep_tree_output:
+        for line in rawoutput:
+            if "[INFO]" in line or "[WARNING]" in line:  # if not ("Downloading" in line or "Downloaded" in line or "Progress" in line):
+                mvn_dep_tree_output.write(line)
+                mvn_dep_tree_output.write('\n')
+                output.append(line)
+            if "Total time" in line:
+                break
+
+
+def write_to_text_dependencies_tree_output():
+    dependency_tree = []
+    with open(".deps/dependencies-tree.txt", "w") as f:
+        for line in output:
+            s = line.replace("|", " ").replace("+-", "  ").replace("\\-", "  ").replace("[INFO]", "")
+            if "---" not in s:
+                if re.search(":", s) is not None:
+                    if re.search(":$", s) is None:
+                        if not "Total time" in s and not "[WARNING]" in s:
+                            s = s.replace("   ", " ")
+                            s = re.sub("^ ", "", s)
+                            if not "::" in s:
+                                s = re.sub("maven-dependency-plugin:[0-9\.]*:tree \(default-cli\) @ ", "", s)
+                                f.write(s)
+                                f.write("\n")
+                                dependency_tree.append(s)
+    return dependency_tree
+
 
 if __name__ == "__main__":
 
@@ -93,35 +131,10 @@ if __name__ == "__main__":
             print("Check error.log for details")
         exit(1)
 
-    with open(".deps/mvn-dep-tree-output.txt", "w") as mvn_dep_tree_output:
-        for l in rawoutput:
-            if "[INFO]" in l or "[WARNING]" in l: #if not ("Downloading" in l or "Downloaded" in l or "Progress" in l):
-                mvn_dep_tree_output.write(l)
-                mvn_dep_tree_output.write('\n')
-                output.append(l)
-            if "Total time" in l:
-                break
+    parse_dependencies_from_maven_output()
 
-    #print("Dependency tree for current directory acquired")
-    #print("\n".join(rawoutput))
-    #input("Raw Output, press Enter")
+    dependency_tree = write_to_text_dependencies_tree_output()
 
-    dependency_tree = []
-
-    with open(".deps/dependencies-tree.txt", "w") as f:
-        for l in output:
-            s = l.replace("|", " ").replace("+-", "  ").replace("\\-", "  ").replace("[INFO]", "")
-            if "---" not in s:
-                if re.search(":", s) is not None:
-                    if re.search(":$", s) is None:
-                        if not "Total time" in s and not "[WARNING]" in s:
-                            s = s.replace("   ", " ")
-                            s = re.sub("^ ", "", s)
-                            if not "::" in s:
-                                s = re.sub("maven-dependency-plugin:[0-9\.]*:tree \(default-cli\) @ ", "", s)
-                                f.write(s)
-                                f.write("\n")
-                                dependency_tree.append(s)
 
     #print("\n".join(dependency_tree))
     #input("Dependency tree, press Enter")
