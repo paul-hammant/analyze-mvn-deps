@@ -100,6 +100,11 @@ class TestVersions(TestCase):
 
         self.assertEqual("", recommended_version_upgrades("4.1", ["4.1alpha", "4.1beta", "4.1M1", "4.1"]))
 
+    def test_21(self):
+
+        self.assertEqual("", recommended_version_upgrades("4.12", ['4.0', '4.1', '4.10', '4.11', '4.11-beta-1', '4.12', '4.12-beta-1', '4.12-beta-2', '4.12-beta-3', '4.2', '4.3', '4.3.1', '4.4',
+                                                                   '4.5', '4.6', '4.7', '4.8', '4.8.1', '4.8.2', '4.9']))
+
 
 if __name__ == '__main__':
     unittest.main()

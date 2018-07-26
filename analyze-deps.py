@@ -10,6 +10,8 @@ import shutil
 
 
 def highest_upgrade_for(version_now, available_versions):
+    if len(available_versions) == 0:
+        return ""
     normalized_available_versions = []
     for ver_avail in available_versions:
         ver_avail = ver_avail.lower()
@@ -23,10 +25,8 @@ def highest_upgrade_for(version_now, available_versions):
             ver_avail = ver_avail + "-zzz"
         normalized_available_versions.append(ver_avail)
 
-    sorted_versions = sorted(normalized_available_versions, reverse=True)
-
+    sorted_versions = natsorted(normalized_available_versions, key=lambda x: x.replace('.', '~')+'z', reverse=True)
     highest = available_versions[normalized_available_versions.index(sorted_versions[0])]
-
     if highest == version_now:
         return ""
 
@@ -147,22 +147,22 @@ if __name__ == "__main__":
         #print("List of versions:")
         for l in req_lines:
             p = re.findall(".*>(.*)/</a>(.*)", l)
-            #print(p)
             if len(p) == 0:
                 continue
             p = list(p[0])
             p = list(map(lambda x: x.strip(), p))
+            p = p[0]
             list_of_versions.append(p)
-        #print(list_of_versions)
-        list_of_versions = natsorted(list_of_versions, key=lambda x: x[0], reverse=True)
+        # list_of_versions = natsorted(list_of_versions, key=lambda x: x, reverse=True)
+        list_of_versions = (recommended_version_upgrades(version, list_of_versions)).split(", ")
         #list_of_versions.sort(reverse=True, key=lambda x: LooseVersion(x[0]))
         #print("List of versions sorted: ")
         #print(list_of_versions)
         list_of_versions_with_current = list_of_versions
         current_index = None
         for i in range(len(list_of_versions_with_current)):
-            if list_of_versions_with_current[i][0] == version:
-                list_of_versions_with_current[i][0] = version + " ***"
+            if list_of_versions_with_current[i] == version:
+                list_of_versions_with_current[i] = version + " ***"
                 current_index = i
         #print("List of versions with current: ")
         #print(list_of_versions_with_current)
@@ -170,23 +170,9 @@ if __name__ == "__main__":
             list_of_versions_since_current = list_of_versions_with_current[:current_index+1]
         else:
             list_of_versions_since_current = list_of_versions_with_current
-        #print("\n".join(list(map(lambda x: " ".join(x), list_of_versions_since_current))))
-        with open(".deps/big-dependency-report.txt", "a") as f:
-            f.write("\n========================================================================\nPresently in use: "+group+":"+artifact+"  "+ version+ "\n")
-            #print("\n========================================================================\nPresently in use: "+group+":"+artifact+"  "+ version+ "\n")
-            matches=[s for s in dependency_tree if re.search(group+":"+artifact, s)]
-            if len(matches) == 0:
-                continue
-            leastTransitiveDep = sorted(matches)[-1]
-            leastTransitiveDep = len(leastTransitiveDep) - len(leastTransitiveDep.strip())
-            f.write("   - a level "+ str(leastTransitiveDep) + " dependencies among "+str(len(matches))+" (possibly transitive) uses\n")
-            f.write("\n".join(list(map(lambda x: str(x[1]) + "\t" + str(x[0]), list_of_versions_since_current))))
-            #print("   - a level "+ str(leastTransitiveDep) + " dependencies among "+str(len(matches))+" (possibly transitive) uses\n")
-            #print("\n".join(list(map(lambda x: str(x[1]) + "\t" + str(x[0]), list_of_versions_since_current))))
         if len(list_of_versions_since_current) > 0:
-            prospectiveVersion=list_of_versions_since_current[0][0]
-            if prospectiveVersion != version:
-                print("Analyzing ", group, ":", artifact)
+            prospectiveVersion= ", ".join(list_of_versions_since_current)
+            if list_of_versions_since_current[0] != version and prospectiveVersion != "":
 
                 regex = "(.* "+group+":"+artifact+":[^ ]*)$"
                 with open(".deps/dependencies-tree.txt", "w") as f:
