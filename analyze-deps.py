@@ -61,17 +61,17 @@ commons-beanutils:commons-beanutils:dev
 commons-beanutils:commons-beanutils:2002
 commons-beanutils:commons-beanutils:2003
 commons-lang:commons-lang:2003
-com.google.guava:guava:r09
+com.google.guava:guava:r08
 """
 
 banned_gav_list = banned_gavs.split("\n")
 
-def not_banned(group, artifact, version):
+def banned(group, artifact, version):
     gav = (group + ":" + artifact + ":" + version)
     for banned_gav in banned_gav_list:
-        if gav in banned_gav:
-            return False
-    return True
+        if banned_gav is not "" and banned_gav in gav:
+            return True
+    return False
 
 if __name__ == "__main__":
 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
             p = list(p[0])
             p = list(map(lambda x: x.strip(), p))
             p = p[0]
-            if not_banned(group, artifact, p):
+            if not banned(group, artifact, p):
                 list_of_versions.append(p)
         # list_of_versions = natsorted(list_of_versions, key=lambda x: x, reverse=True)
         list_of_versions = (recommended_version_upgrades(version, list_of_versions)).split(", ")
