@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import sys
 import subprocess
 import re
 import requests
@@ -135,24 +134,14 @@ if __name__ == "__main__":
 
     dependency_tree = write_to_text_dependencies_tree_output()
 
-
-    #print("\n".join(dependency_tree))
-    #input("Dependency tree, press Enter")
-
     flattened_unique_gavs = [":".join(s.replace(" ", "").split(":")[:4]) for s in dependency_tree if ":" in s and re.search("-+<.*>-+", s) is None]
     flattened_unique_gavs = sorted(list(set(flattened_unique_gavs)))
 
     with open(".deps/flattened-unique-gavs.txt", "w") as f:
         f.write("\n".join(flattened_unique_gavs))
-        #print("\n".join(flattened_unique_gavs))
-        #input("Flattened unique gavs, press Enter")
 
-    #do_input = False
     for l in flattened_unique_gavs:
-        #if l == 'com.esotericsoftware:minlog:jar:1.3.0':
-            #do_input = True
         group, artifact, typ, version = l.split(":")
-        #print(l.split(":"))
         groupDir = group.replace(".", "/")
         try:
             r = requests.get("http://central.maven.org/maven2/"+ groupDir + "/" + artifact)
@@ -160,21 +149,10 @@ if __name__ == "__main__":
             print("Connection troubles for package:", l)
             continue
         req_lines = r.text.split("\n")
-        #print("\n".join(req_lines))
         req_lines = list(map(lambda x: re.sub("\-         \-", "unknown-date unknown:time", x), req_lines))
-        #print("Put unknowns")
-        #print("\n".join(req_lines))
         req_lines = list(map(lambda x: re.sub("\W+-\W+$", "", x), req_lines))
-        #print("strip ends")
-        #print("\n".join(req_lines))
         req_lines = list(filter(lambda x: "href" in x and not "maven-metadata" in x and not ">../</" in x, req_lines))
-        #print("grep references")
-        #print("\n".join(req_lines))
-        #req_lines = list(filter(lambda x: re.search("beta", x, re.I) is None and re.search("alpha", x, re.I) is None and re.search("[Rr][Cc][\.]*[0-9]* ", x) is None, req_lines))
-        #print("remove beta's and alphas")
-        #print("\n".join(req_lines))
         list_of_versions = []
-        #print("List of versions:")
         for l in req_lines:
             p = re.findall(".*>(.*)/</a>(.*)", l)
             if len(p) == 0:
@@ -184,19 +162,13 @@ if __name__ == "__main__":
             p = p[0]
             if not banned(group, artifact, p):
                 list_of_versions.append(p)
-        # list_of_versions = natsorted(list_of_versions, key=lambda x: x, reverse=True)
         list_of_versions = (recommended_version_upgrades(version, list_of_versions)).split(", ")
-        #list_of_versions.sort(reverse=True, key=lambda x: LooseVersion(x[0]))
-        #print("List of versions sorted: ")
-        #print(list_of_versions)
         list_of_versions_with_current = list_of_versions
         current_index = None
         for i in range(len(list_of_versions_with_current)):
             if list_of_versions_with_current[i] == version:
                 list_of_versions_with_current[i] = version + " ***"
                 current_index = i
-        #print("List of versions with current: ")
-        #print(list_of_versions_with_current)
         if current_index is not None:
             list_of_versions_since_current = list_of_versions_with_current[:current_index+1]
         else:
@@ -210,14 +182,10 @@ if __name__ == "__main__":
                     for i in range(len(dependency_tree)):
                         if re.search(regex, dependency_tree[i]) is not None:
                             dependency_tree[i] = dependency_tree[i] + "  > " +str(prospectiveVersion)
-                            #print(dependency_tree[i])
                         f.write(dependency_tree[i])
                         f.write("\n")
-        #if do_input:
-            #input("Press ENter")
 
     with open(".deps/immediate-upgrade-opportunities.txt", "w") as f:
         f.write("\n".join(list(sorted(set([d for d in dependency_tree if re.search("^  ", d) is None and re.search(">", d) is not None])))))
-
 
     print("Check the .deps/ directory")
