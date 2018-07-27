@@ -55,7 +55,7 @@ def recommended_version_upgrades(version_now, available_versions):
     return ", ".join(sorted(upg.split(", "), reverse=True))
 
 
-banned_gavs = """
+misleading_gavs = """
 commons-beanutils:commons-beanutils:dev
 commons-beanutils:commons-beanutils:2002
 commons-beanutils:commons-beanutils:2003
@@ -63,12 +63,12 @@ commons-lang:commons-lang:2003
 com.google.guava:guava:r0
 """
 
-banned_gav_list = banned_gavs.split("\n")
+misleading_gav_list = misleading_gavs.split("\n")
 
-def banned(group, artifact, version):
+def misleading(group, artifact, version):
     gav = ":".join([group, artifact, version])
-    for banned_gav in banned_gav_list:
-        if banned_gav is not "" and banned_gav in gav:
+    for misleading_gav in misleading_gav_list:
+        if misleading_gav is not "" and misleading_gav in gav:
             return True
     return False
 
@@ -95,8 +95,10 @@ def write_to_text_dependencies_tree_output():
     dependency_tree = []
     with open(".deps/dependencies-tree.txt", "w") as f:
         for line in output:
+            if "Reactor Summary:" in line:
+                break
             s = line.replace("|", " ").replace("+-", "  ").replace("\\-", "  ").replace("[INFO]", "")
-            if "---" not in s:
+            if "---" not in s and "--<" not in s and not s.startswith(" Building ") and not s.endswith("[jar]") and not s.endswith("[pom]"):
                 if re.search(":", s) is not None:
                     if re.search(":$", s) is None:
                         if not "Total time" in s and not "[WARNING]" in s:
@@ -124,7 +126,7 @@ def determine_list_of_versions():
         p = list(p[0])
         p = list(map(lambda x: x.strip(), p))
         p = p[0]
-        if not banned(group, artifact, p):
+        if not misleading(group, artifact, p):
             list_of_versions.append(p)
     return list_of_versions
 
