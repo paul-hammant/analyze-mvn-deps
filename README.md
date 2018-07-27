@@ -2,8 +2,11 @@
 
 A Python3 script to analyze Maven dependency upgrade opportunities.
 
-It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin/) and 
-[versions-maven-plugin](http://www.mojohaus.org/versions-maven-plugin/) (and maybe others) that are written in Java.
+It is an alternative to the [maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin/) and 
+[versions-maven-plugin](http://www.mojohaus.org/versions-maven-plugin/) and [versions-maven-plugin](https://www.mojohaus.org/versions-maven-plugin/) 
+that are written in Java. At least, for simple dependency upgrade opportunities.
+
+It is not pure Python, it still runs Maven's `dependency:tree` under the hood.
 
 ## Script dependencies
 
