@@ -32,17 +32,20 @@ After running the script, peer inside the `.deps/` folder and look at the genera
 * immediate-upgrade-opportunities.txt
 * mvn-dep-tree-output.txt
 
-They can all be checked in if you want (except `mvn-dep-tree-output.txt`). If you do so, you get to watch a moving target (using Git diff or show) each 
-time you run the analyze-deps script. Meaning, you were in step with other projects releases yesterday, but today 
-you are not.
+They can all be checked in if you want (except `mvn-dep-tree-output.txt`). If you do so, you get to watch a moving target 
+(using Git diff or show) each time you run the analyze-deps script. Meaning, you were in step with other projects releases 
+yesterday, but today you are not.
 
 I think the `immediate-upgrade-opportunities.txt` and `dependencies-tree.txt` files are the most useful ones. At least 
-ones that you'd use to guide you 
-towards which dependency to upgrade first (or harass other dev teams).
+ones that you'd use to guide you towards which dependency to upgrade first (or harass other dev teams).
 
 With `dependencies-tree.txt` you get to see transitive dependencies too. You would not upgrade those yourself but that 
-level of detail does give you clues that that
-an 'upstream' team should attend to their upgrades (assuming you are on the latest of their releases).
+level of detail does give you clues that that an 'upstream' team should attend to their upgrades (assuming you are on 
+the latest of their releases).
+
+In some cases, the script may suggest two or more alternate upgrade suggestions. For example (as of July 27th), a Maven project
+depending on the jar for Groovy v2.5.0 would see three alternate suggested upgrades: 3.0.0-alpha-3, 2.6.0-alpha-4, or 2.5.1. 
+As it happens the script was previously all in bash, and was migrated to Python for this feature.
 
 ## Glitches
 
@@ -53,15 +56,12 @@ that right at the top, version `1.2.17` is marked as  eligible to upgrade to ver
 scan past that quickly as a red herring.
 
 2. Related a group:artifact may be in the larger graph twice. Once as 'jar' and once as something else, causing an 
-erroneous marking for upgrade.
+erroneous upgrade suggestion.
 
 3. Qualifiers are not well catered for. See `org.apache.avro:avro-mapred:jar:hadoop2:1.7.7:compile` above (hadoop2 
 being the qualifier).
 
-4. Where a team releases (say) `4.1.3` and then back-ports the fix of a bug to (say) `3.9.5` the latter might have a 
-more recent timestamp and be deemed more recent than the former - causing an erroneous upgrade suggestion.
-
-5. The script is only checking the 'maven central' repository. So Gradle's at https://repo.gradle.org/gradle/libs-releases-local/ 
+4. The script is only checking the 'maven central' repository. So Gradle's at https://repo.gradle.org/gradle/libs-releases-local/ 
 is not checked
 
 ## Examples of output for the excellent Hazelcast [github.com/hazelcast/hazelcast-jet-demos](https://github.com/hazelcast/hazelcast-jet-demos) 
