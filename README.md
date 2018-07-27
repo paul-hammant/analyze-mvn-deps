@@ -6,8 +6,14 @@ It is an alternative to [maven-dependency-plugin](https://maven.apache.org/plugi
 [versions-maven-plugin](http://www.mojohaus.org/versions-maven-plugin/) (and maybe others) that are written in Java.
 
 ## Script dependencies
+
 The script uses [natsort](https://pypi.org/project/natsort/)([docs](https://natsort.readthedocs.io/en/master/)) and 
 [requests](https://pypi.org/project/requests/)([docs](http://docs.python-requests.org/en/master/))
+
+```
+$ pip3 install natsort requests
+```
+
 
 ## Running it
 
@@ -17,6 +23,7 @@ First `cd` to your clone/checkout (where the room pom.xml is) and then:
 $ mvn install -DskipTests
 $ python3 <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-mvn-deps/master/analyze-mvn-deps.py)
 ```
+
 That works on Mac and Linux. It probably will not work on the Linux-Subsystem-For-Windows (can someone let me know?). 
 
 History: I just wanted to see how far I could get in shell script alone without resorting to Java (like the existing plugins for this). 
