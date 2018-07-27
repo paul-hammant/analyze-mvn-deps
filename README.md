@@ -6,7 +6,8 @@ It is an alternative to the [maven-dependency-plugin](https://maven.apache.org/p
 [versions-maven-plugin](http://www.mojohaus.org/versions-maven-plugin/) and [versions-maven-plugin](https://www.mojohaus.org/versions-maven-plugin/) 
 that are written in Java. At least, for simple dependency upgrade opportunities.
 
-It is not pure Python, it still runs Maven's `dependency:tree` under the hood.
+It is not pure Python, it still runs Maven's `dependency:tree` under the hood. This script has been developed with 
+contributions from [Ilia Mikhnevich](https://www.upwork.com/freelancers/~019c7bb4b07ba7679e).
 
 ## Script dependencies
 
