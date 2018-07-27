@@ -15,7 +15,7 @@ $ pip3 install natsort requests
 ```
 
 
-## Running it
+## Running the script
 
 First `cd` to your clone/checkout (where the room pom.xml is) and then:
 
@@ -50,26 +50,28 @@ With `dependencies-tree.txt` you get to see transitive dependencies too. You wou
 level of detail does give you clues that that an 'upstream' team should attend to their upgrades (assuming you are on 
 the latest of their releases).
 
+### Key feature
+
 In some cases, the script may suggest two or more alternate upgrade suggestions. For example (as of July 27th), a Maven project
 depending on the jar for Groovy v2.5.0 would see three alternate suggested upgrades: 3.0.0-alpha-3, 2.6.0-alpha-4, or 2.5.1. 
 As it happens the script was previously all in bash, and was migrated to Python for this feature.
 
 ## Glitches
 
-1. If the dependency tree has two versions of the same group:artifact and there is some independence in the complete DAG 
+1. The script is only checking the 'maven central' repository. So Gradle's at https://repo.gradle.org/gradle/libs-releases-local/ 
+is not checked
+
+2. If the dependency tree has two versions of the same group:artifact and there is some independence in the complete DAG 
 between those two branches, then the item can be listed twice and/or marked for upgrade when none is necessary. You can 
 see that with `log4j` (jar) which is marked as `1.2.12` in one branch and `1.2.17` in another. Anyway, the confusion means 
 that right at the top, version `1.2.17` is marked as  eligible to upgrade to version `1.2.17` - doh!. Your eyeballs will 
 scan past that quickly as a red herring.
 
-2. Related a group:artifact may be in the larger graph twice. Once as 'jar' and once as something else, causing an 
+3. (Related) A group:artifact may be in the larger graph twice. Once as 'jar' and once as something else, causing an 
 erroneous upgrade suggestion.
 
-3. Qualifiers are not well catered for. See `org.apache.avro:avro-mapred:jar:hadoop2:1.7.7:compile` above (hadoop2 
+4. Qualifiers are not well catered for. See `org.apache.avro:avro-mapred:jar:hadoop2:1.7.7:compile` above (hadoop2 
 being the qualifier).
-
-4. The script is only checking the 'maven central' repository. So Gradle's at https://repo.gradle.org/gradle/libs-releases-local/ 
-is not checked
 
 ## Examples of output for the excellent Hazelcast [github.com/hazelcast/hazelcast-jet-demos](https://github.com/hazelcast/hazelcast-jet-demos) 
 
