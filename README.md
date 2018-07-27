@@ -1,4 +1,4 @@
-# analyze-deps: An alternative Maven dependency analyzer.
+# analyze-mvn-deps: An alternative Maven dependency analyzer.
 
 A Python3 script to analyze Maven dependency upgrade opportunities.
 
@@ -15,7 +15,7 @@ First `cd` to your clone/checkout (where the room pom.xml is) and then:
 
 ```
 $ mvn install -DskipTests
-$ python3 <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-deps/master/analyze-deps.py)
+$ python3 <(curl -s https://raw.githubusercontent.com/paul-hammant/analyze-mvn-deps/master/analyze-mvn-deps.py)
 ```
 That works on Mac and Linux. It probably will not work on the Linux-Subsystem-For-Windows (can someone let me know?). 
 
@@ -33,7 +33,7 @@ After running the script, peer inside the `.deps/` folder and look at the genera
 * mvn-dep-tree-output.txt
 
 They can all be checked in if you want (except `mvn-dep-tree-output.txt`). If you do so, you get to watch a moving target 
-(using Git diff or show) each time you run the analyze-deps script. Meaning, you were in step with other projects releases 
+(using Git diff or show) each time you run the analyze-mvn-deps script. Meaning, you were in step with other projects releases 
 yesterday, but today you are not.
 
 I think the `immediate-upgrade-opportunities.txt` and `dependencies-tree.txt` files are the most useful ones. At least 
