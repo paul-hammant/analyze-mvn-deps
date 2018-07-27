@@ -57,8 +57,8 @@ def recommended_version_upgrades(version_now, available_versions):
 
 misleading_gavs = """
 commons-beanutils:commons-beanutils:dev
-commons-beanutils:commons-beanutils:2002
-commons-beanutils:commons-beanutils:2003
+commons-beanutils:commons-beanutils:200
+commons-io:commons-io:200
 commons-lang:commons-lang:2003
 com.google.guava:guava:r0
 """
